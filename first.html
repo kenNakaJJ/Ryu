@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub無料プラン活用ガイド - 社内ナレッジ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            font-weight: 700;
+        }
+        .code-block {
+            background-color: #2d3748; /* bg-gray-800 */
+            color: #e2e8f0; /* text-gray-200 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+        .code-block pre {
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto max-w-4xl p-4 sm:p-8">
+        <div class="bg-white p-6 sm:p-10 rounded-xl shadow-lg">
+
+            <!-- ヘッダー -->
+            <header class="mb-10 border-b pb-6">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900">GitHub無料プラン活用ガイド</h1>
+                <p class="mt-2 text-lg text-gray-600">社内ナレッジ共有のためのスタートアップマニュアル</p>
+            </header>
+
+            <!-- はじめに -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">はじめに：なぜ今、GitHubなのか？</h2>
+                <p class="mb-4 text-base leading-relaxed">
+                    まず、GitHub（ギットハブ）とは何か、一言でいうと<strong>「プログラムのソースコードや様々なファイルをインターネット上で保存・管理・共有できるサービス」</strong>です。
+                </p>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                        <h3 class="font-semibold text-blue-800">個人の記録</h3>
+                        <p class="text-blue-700">「あの時の状態に戻したい！」という時に、いつでも過去の状態にタイムスリップできます。</p>
+                    </div>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                        <h3 class="font-semibold text-green-800">チームの連携</h3>
+                        <p class="text-green-700">「誰が、いつ、どこを、何のために変更したか」が全て記録されるので、複数人での作業がとてもスムーズになります。</p>
+                    </div>
+                </div>
+                <p class="mt-6 text-base leading-relaxed">
+                    そして素晴らしいことに、個人や小規模チームであれば、無料プランでほとんどの主要機能が使えてしまいます。 それでは、具体的な中身を見ていきましょう。
+                </p>
+            </section>
+
+            <!-- 第1章 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">第1章: GitHub無料プランで「できること」一覧</h2>
+                <p class="mb-6 text-base leading-relaxed">
+                    これが無料というのは本当に驚きです。無料プランの主な機能をリストアップしました。
+                </p>
+                <div class="overflow-x-auto rounded-lg border">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">機能カテゴリ</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">具体的にできること</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">解説</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">リポジトリ</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">パブリック・プライベート共に無制限に作成可能</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">リポジトリとは、ファイルやフォルダを保管しておく場所（プロジェクトの置き場）のことです。公開用（パブリック）も、非公開用（プライベート）も、好きなだけ作れます。</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">共同作業</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">共同作業者の人数 無制限</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">プライベートなリポジトリでも、招待する共同作業者の数に制限はありません。チームでの開発に最適です。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">自動化 (CI/CD)</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">GitHub Actions (月2,000分まで)</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">プログラムのテストやWebサイトの公開などを自動化する機能です。月2,000分（約33時間）も無料で使え、多くのプロジェクトでは十分な時間です。</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">パッケージ管理</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">GitHub Packages (500MBまで)</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">作成したプログラム部品（パッケージ）を保管しておく場所です。無料でも500MBのストレージが使えます。</td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Webサイト公開</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">GitHub Pages</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">HTML/CSS/JavaScriptで作った静的なWebサイトを無料で公開できます。自分のポートフォリオ作成に最適です。</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">セキュリティ</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">Dependabotによる脆弱性アラート</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">プロジェクトが利用している外部プログラムの脆弱性を自動で通知し、修正を提案してくれます。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">タスク管理</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">Issues, Projects</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">「バグ修正」「新機能の追加」といったタスクを管理し、誰が何を担当しているかが一目でわかります。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">◆ 有料プランとの主な違いは？</h3>
+                    <p class="mb-4 text-base leading-relaxed">無料プランでも非常に強力ですが、有料プラン（TeamやEnterprise）では、より高度な管理・セキュリティ機能が追加されます。</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>高度なブランチ保護:</strong> 「部長の承認がないと重要なファイルは変更できない」といった、より厳密なルールを設定できます。</li>
+                        <li><strong>必須レビュー担当者 (Code Owners):</strong> 特定のコードを変更する際に、自動で担当者をレビューワーに指定できます。</li>
+                        <li><strong>ActionsやPackagesの利用枠増加:</strong> 大規模なプロジェクトで無料枠を超えて利用する場合に必要になります。</li>
+                        <li><strong>SAMLシングルサインオン:</strong> 会社の認証システムと連携できます。</li>
+                    </ul>
+                    <p class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 rounded-r-lg">
+                        <strong>結論：</strong>まずは無料で始めて、チームが大規模になったり、より高度なセキュリティや管理が必要になったりしたタイミングで、有料プランを検討すれば全く問題ありません。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 第2章 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">第2章: ゼロから始める！GitHubかんたん3ステップ</h2>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">ステップ1：アカウントを作成しよう</h3>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700 leading-relaxed">
+                            <li><strong><a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">GitHub公式サイト</a></strong>にアクセスします。</li>
+                            <li>「GitHubに登録する」または「サインアップ」ボタンを押し、メールアドレス、パスワード、ユーザー名を入力します。</li>
+                            <li>ユーザー名は後から変更できますが、あなたのIDとしてURLなどにも使われるので、よく考えて決めましょう。</li>
+                            <li>画面の指示に従い、パズルなどで認証を済ませればアカウント作成は完了です。</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">ステップ2：リポジトリ（プロジェクトの置き場）を作成しよう</h3>
+                         <ol class="list-decimal list-inside space-y-2 text-gray-700 leading-relaxed">
+                             <li>ログイン後、画面右上の「+」アイコンから「New repository」を選択します。</li>
+                             <li>以下の項目を設定します。
+                                 <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                                     <li><strong>Repository name:</strong> リポジトリの名前（例: my-first-project）</li>
+                                     <li><strong>Description:</strong> (任意) プロジェクトの簡単な説明</li>
+                                     <li><strong>Public / Private:</strong> 社内用なら<strong class="text-red-600">Private</strong>が安心です。</li>
+                                     <li><strong>Add a README file:</strong> <strong class="text-green-600">チェックを強く推奨します。</strong></li>
+                                 </ul>
+                            </li>
+                             <li>「Create repository」ボタンを押せば、プロジェクトの置き場所が完成です！</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">ステップ3：ファイルを置いてみよう（2つの方法）</h3>
+                        <p class="mb-4 text-base leading-relaxed">作成したリポジトリにファイルを追加してみましょう。最初は簡単なWeb画面からの操作がおすすめです。</p>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="bg-gray-50 p-6 rounded-lg border">
+                                <h4 class="font-bold text-lg mb-2">方法A：【一番かんたん】Web画面からアップロード</h4>
+                                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                                    <li>リポジトリのページで「Add file」→「Upload files」を選択。</li>
+                                    <li>ファイルをドラッグ＆ドロップするか選択。</li>
+                                    <li>画面下の「Commit changes」ボタンを押して完了！</li>
+                                </ol>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border">
+                                <h4 class="font-bold text-lg mb-2">方法B：【本格的】自分のPCからGitを使ってアップロード</h4>
+                                <p class="text-sm text-gray-600 mb-3">チーム開発で必須となる方法です。「Git」というツールのインストールが必要です。</p>
+                                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                                    <li><strong class="text-blue-600">git-scm.com</strong>からGitをインストール。</li>
+                                    <li>PCでコマンドを実行してファイルをアップロードします。</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-semibold mb-2">方法Bの具体的なコマンドの流れ</h4>
+                            <p class="mb-3 text-sm">PCで作業 → <code class="bg-gray-200 text-red-600 px-1 rounded">add</code>で選択 → <code class="bg-gray-200 text-red-600 px-1 rounded">commit</code>で記録 → <code class="bg-gray-200 text-red-600 px-1 rounded">push</code>でアップロード、という流れです。</p>
+                            <div class="code-block">
+                                <pre><code><span class="text-gray-400"># 1. リポジトリをPCにコピー (初回のみ)</span>
+git clone [リポジトリのURL]
+
+<span class="text-gray-400"># 2. ファイルの変更・追加を選択</span>
+git add .
+
+<span class="text-gray-400"># 3. 変更内容をメッセージ付きで記録</span>
+git commit -m "最初のファイルを追加"
+
+<span class="text-gray-400"># 4. GitHubにアップロード</span>
+git push</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 第3章 -->
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">第3章: チーム作業の要！基本機能を使ってみよう</h2>
+                <p class="mb-6 text-base leading-relaxed">GitHubの真価はチームでの共同作業で発揮されます。ここでは最低限知っておきたい2つの機能を紹介します。</p>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Issues (イシュー): タスク管理の掲示板</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>リポジトリの「Issues」タブから作成します。</li>
+                            <li>「〇〇のバグを修正する」「〇〇の機能を追加する」といったタスクを書き出します。</li>
+                            <li>担当者を割り当てたり、コメントで議論したりできます。</li>
+                            <li>プロジェクトの「やることリスト」として活用できます。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Pull Request (プルリクエスト): 変更内容のレビュー依頼</h3>
+                         <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>共同作業の中心となる、最も重要な機能です。</li>
+                            <li>自分の変更をいきなり本体に反映させず、「こういう変更をしましたが、レビューして取り込んでください」と依頼を出す仕組みです。</li>
+                            <li>他のメンバーが変更内容を確認し、問題なければ承認（Merge）することで、安全にコードを更新できます。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- まとめ -->
+            <section class="border-t pt-8 mt-8">
+                 <h2 class="text-2xl font-bold mb-4 text-gray-800">まとめ</h2>
+                 <p class="mb-4 text-base leading-relaxed">ここまでの内容が、GitHubを無料で使い始めるための基本の全てです。</p>
+                 <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>無料でもリポジトリは無制限。個人・チーム開発の基本機能は全て揃っています。</span>
+                    </li>
+                     <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>まずはアカウントとPrivateリポジトリを作り、Web画面からファイルをアップロードしてみることから始めましょう。</span>
+                    </li>
+                     <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>慣れてきたらGitをPCに導入し、<code class="bg-gray-200 text-sm px-1 rounded">clone → add → commit → push</code> の流れをマスターしましょう。</span>
+                    </li>
+                     <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Issuesでタスクを管理し、Pull Requestで安全な共同作業を実現しましょう。</span>
+                    </li>
+                 </ul>
+                 <p class="mt-6 p-4 bg-indigo-50 border-l-4 border-indigo-500 text-indigo-800 rounded-r-lg">
+                    これらの基本をまとめたナレッジを社内で共有し、実際に簡単なプロジェクト（例えば、社内ドキュメント管理など）で皆さんに触ってもらうのが、定着への一番の近道だと思います。
+                 </p>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+</html>
