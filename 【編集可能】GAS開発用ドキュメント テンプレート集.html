@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!-- saved from url=(0217)file:///C:/Users/knaka/Desktop/%EF%BC%88%E6%96%B0%EF%BC%89%E6%9C%88%E6%AC%A1%E8%A8%98%E5%B8%B3%E3%82%A2%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86.html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【編集可能】GAS開発用ドキュメント テンプレート集</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f4f5f7;
+            margin: 0;
+            padding: 2em;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            color: #1a237e;
+            margin-bottom: 0.5em;
+        }
+        .instruction {
+            text-align: center;
+            padding: 1em;
+            background-color: #e3f2fd;
+            border: 1px solid #90caf9;
+            border-radius: 8px;
+            margin-bottom: 2em;
+        }
+        .template-section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2.5em;
+            padding: 1.5em 2em;
+        }
+        h2, h3 {
+            font-weight: 600;
+            color: #0d47a1; /* Darker blue */
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.3em;
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+        }
+        h2 {
+            font-size: 1.6em;
+        }
+        h3 {
+            font-size: 1.2em;
+            border-bottom-style: dashed;
+        }
+        p, ul, ol {
+            margin-bottom: 1.2em;
+        }
+        ul, ol {
+            padding-left: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: #e8eaf6;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        /* --- 編集可能エリアのスタイル --- */
+        [contenteditable="true"] {
+            background-color: #fffde7; /* Light yellow */
+            border: 1px dashed #ccc;
+            padding: 0.3em 0.6em;
+            border-radius: 4px;
+            cursor: text;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            min-height: 1.2em; /* 空でも高さを持たせる */
+            display: inline-block;
+            width: 95%; /* 幅を広めに確保 */
+        }
+        li > [contenteditable="true"] {
+            display: block; /* liタグ内ではブロック要素にする */
+        }
+        td > [contenteditable="true"] {
+             width: 90%; /* テーブルセル内での幅調整 */
+        }
+        [contenteditable="true"]:focus {
+            background-color: #ffffff;
+            outline: none;
+            border-color: #42a5f5; /* Light blue border on focus */
+            box-shadow: 0 0 5px rgba(66, 165, 245, 0.5);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.8em;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        .note {
+            background-color: #fff9c4;
+            border: 1px solid #fbc02d;
+            padding: 1em;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>【編集可能】GAS開発用ドキュメント テンプレート集</h1>
+        <div class="instruction">
+            <p>💡 <b>使い方:</b> 下記の黄色いエリアは直接クリックして編集できます。<br>
+            編集が完了したら、各セクションの内容をコピーしてドキュメントとして保存・活用してください。</p>
+        </div>
+
+        <!-- ====================================================================== -->
+        <!-- 仕様書 / README テンプレート -->
+        <!-- ====================================================================== -->
+        <section id="readme-template" class="template-section">
+            <h2>仕様書 / README.md テンプレート</h2>
+            
+            <h3>1. 概要 (Overview)</h3>
+            <p contenteditable="true">毎朝9時に売上速報データを集計し、関係者へサマリーメールを送信するスクリプトです。</p>
+
+            <h3>2. 目的・解決する課題 (Purpose)</h3>
+            <p contenteditable="true">これまで手動で行っていた日次レポート作成業務を自動化し、〇〇時間の工数削減と、集計ミスを防止することを目的とします。</p>
+
+            <h3>3. 主な機能 (Features)</h3>
+            <ul>
+                <li><span contenteditable="true">〇〇スプレッドシートからのデータ取得</span></li>
+                <li><span contenteditable="true">データの集計・整形</span></li>
+                <li><span contenteditable="true">メール本文の自動生成</span></li>
+                <li><span contenteditable="true">指定アドレスへのメール送信</span></li>
+            </ul>
+
+            <h3>4. 処理フロー (Workflow)</h3>
+            <ol>
+                <li><span contenteditable="true">1. 時間主導型トリガーにより main 関数が起動</span></li>
+                <li><span contenteditable="true">2. 〇〇スプレッドシートからデータを取得</span></li>
+                <li><span contenteditable="true">3. データを整形・集計</span></li>
+                <li><span contenteditable="true">4. エラーがなければメールを送信</span></li>
+                <li><span contenteditable="true">5. ログ用スプレッドシートに実行結果を記録して終了</span></li>
+            </ol>
+            
+            <h3>5. 関連リソース (Related Resources)</h3>
+            <ul>
+                <li>処理対象スプレッドシート: <span contenteditable="true">ここにスプレッドシートのURLを貼る</span></li>
+                <li>ログ用スプレッドシート: <span contenteditable="true">ここにスプレッドシートのURLを貼る</span></li>
+                <li>関連ファイル保存先フォルダ: <span contenteditable="true">ここにGoogleドライブフォルダのURLを貼る</span></li>
+            </ul>
+
+            <h3>6. 開発者情報 (Author / Maintainer)</h3>
+            <ul>
+                <li>開発部署: <span contenteditable="true">〇〇部 〇〇課</span></li>
+                <li>主担当: <span contenteditable="true">鈴木 太郎</span></li>
+            </ul>
+        </section>
+
+
+        <!-- ====================================================================== -->
+        <!-- 設定手順書 テンプレート -->
+        <!-- ====================================================================== -->
+        <section id="setup-template" class="template-section">
+            <h2>設定手順書 テンプレート</h2>
+            
+            <h3>3. スクリプトプロパティの設定 (Script Properties)</h3>
+            <p>本スクリプトは、変更される可能性のある設定値をスクリプトプロパティで管理しています。<br>
+            <code>ファイル &gt; プロジェクトの設定 &gt; スクリプト プロパティ</code> から以下の値を設定してください。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>キー</th>
+                        <th>説明</th>
+                        <th>設定例</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>SPREADSHEET_ID</code></td>
+                        <td><span contenteditable="true">処理対象のスプレッドシートID</span></td>
+                        <td><span contenteditable="true">12345abcdefg_hijklmnOPQRSTU</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>ADMIN_EMAIL</code></td>
+                        <td><span contenteditable="true">エラー通知を受け取る管理者のメールアドレス</span></td>
+                        <td><span contenteditable="true">admin@example.com</span></td>
+                    </tr>
+                    <tr>
+                        <td><span contenteditable="true">API_KEY</span></td>
+                        <td><span contenteditable="true">使用する外部サービスのAPIキー</span></td>
+                        <td><span contenteditable="true">（ここに直接書かず、プロパティに設定する）</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note">
+                <strong>注意:</strong> APIキーやパスワードなどの機密情報を、このドキュメント内に直接記述しないでください。
+            </div>
+
+            <h3>4. トリガーの設定 (Triggers)</h3>
+            <p><code>編集 &gt; 現在のプロジェクトのトリガー</code> から、以下の設定でトリガーを新規作成してください。</p>
+            <ul>
+                <li><strong>実行する関数を選択:</strong> <span contenteditable="true">main</span></li>
+                <li><strong>イベントのソースを選択:</strong> <span contenteditable="true">時間主導型</span></li>
+                <li><strong>時間ベースのタイマーの種類を選択:</strong> <span contenteditable="true">日付ベースのタイマー</span></li>
+                <li><strong>時刻を選択:</strong> <span contenteditable="true">午前 8 時～9 時</span></li>
+            </ul>
+        </section>
+
+
+        <!-- ====================================================================== -->
+        <!-- 利用者マニュアル テンプレート -->
+        <!-- ====================================================================== -->
+        <section id="user-manual-template" class="template-section">
+            <h2>利用者マニュアル テンプレート</h2>
+            
+            <h3>1. このツールでできること</h3>
+            <p contenteditable="true">このツールを使うと、スプレッドシートの「カスタムメニュー」からワンクリックで、最新の請求書PDFを作成し、指定のフォルダに保存できます。</p>
+
+            <h3>2. 使い方 (How to Use)</h3>
+            <ol>
+                <li><span contenteditable="true">1. 請求書データが入力されたスプレッドシートを開きます。</span></li>
+                <li><span contenteditable="true">2. 上部メニューの [カスタムメニュー] &gt; [請求書作成] をクリックします。</span></li>
+                <li><span contenteditable="true">3. 「処理を実行しますか？」というダイアログが表示されたら「はい」をクリックします。</span></li>
+                <li><span contenteditable="true">4. 「完了しました」と表示されたら、〇〇フォルダにPDFが作成されています。</span></li>
+            </ol>
+            
+            <h3>3. 注意事項 (Notes)</h3>
+            <ul>
+                <li><span contenteditable="true">一度に処理できるデータは100行までです。</span></li>
+                <li><span contenteditable="true">処理には数分かかる場合があります。完了メッセージが表示されるまでブラウザを閉じないでください。</span></li>
+            </ul>
+
+            <h3>4. エラーかな？と思ったら (Troubleshooting)</h3>
+            <ul>
+                <li>
+                    <strong>Q. メニューが表示されません。</strong>
+                    <p contenteditable="true">A. ページを再読み込み（F5キー）してみてください。それでも表示されない場合は、管理者にお知らせください。</p>
+                </li>
+                <li>
+                    <strong>Q. 「エラーが発生しました」と表示されます。</strong>
+                    <p contenteditable="true">A. 時間を置いて再度試してみてください。何度も発生する場合は、エラーメッセージを控えて管理者にご連絡ください。</p>
+                </li>
+            </ul>
+
+            <h3>5. 問い合わせ先 (Contact)</h3>
+            <p contenteditable="true">不明点や不具合については、山下 (suzuki@example.com) までご連絡ください。</p>
+        </section>
+
+    </div>
+
+
+</body></html>
