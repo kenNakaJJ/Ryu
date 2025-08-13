@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://www.genspark.ai/api/page_private?id=bnsbupnu -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIを活用した社内コード開発ガイドライン</title>
+    <link href="./AIを活用した社内コード開発ガイドライン_files/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./AIを活用した社内コード開発ガイドライン_files/all.min.css">
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 10mm;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .slide {
+            width: 100%;
+            min-height: 210mm;
+            padding: 20px;
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+        
+        .main-color { background-color: #00a4c5; }
+        .sub-color-1 { background-color: #80d2e2; }
+        .sub-color-2 { background-color: #ccedf3; }
+        .dark-color { background-color: #231815; }
+        .gray-color { background-color: #E2E2E3; }
+        
+        .text-main { color: #00a4c5; }
+        .text-dark { color: #231815; }
+        
+        .flow-arrow {
+            position: relative;
+        }
+        
+        .flow-arrow::after {
+            content: '→';
+            font-size: 24px;
+            color: #00a4c5;
+            margin: 0 10px;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            border-left: 4px solid #00a4c5;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .step-box {
+            border: 2px solid #00a4c5;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #f8fdff;
+        }
+        
+        .icon-large {
+            font-size: 48px;
+            color: #00a4c5;
+        }
+    </style>
+<style>
+    .genspark-notice-dialog {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10001;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .genspark-notice-content {
+      background-color: white;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      box-sizing: border-box;
+      padding: 10px 30px 30px 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+    }
+
+    .genspark-notice-title {
+      color: #000;
+      font-family: Arial;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; 
+    }
+
+    .genspark-notice-list {
+      margin: 24px 0;
+      
+      color: #606366;
+      font-family: Arial;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+      padding-left: 12px;
+    }
+
+    .genspark-notice-list li {
+      margin-bottom: 12px;
+      list-style-type: disc;
+    }
+
+    .genspark-notice-list li a {
+      color: #606366;
+      text-decoration: underline;
+    }
+
+    .genspark-notice-checkbox {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      gap: 10px;
+
+      color: #232425;
+
+      font-family: Arial;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .genspark-notice-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+      
+    .genspark-notice-ok {
+      color: #232425;
+
+      text-align: center;
+      font-family: Arial;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; 
+
+      cursor: pointer;
+      display: flex;
+      height: 40px;
+      padding: 6px 14px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      align-self: stretch;
+      border-radius: 8px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  </style></head>
+<body class="bg-white">
+
+<!-- スライド1: タイトル -->
+<div class="slide">
+    <div class="flex items-center justify-center h-full">
+        <div class="text-center">
+            <div class="flex justify-center mb-8">
+                <i class="fas fa-key icon-large mr-4"></i>
+                <i class="fas fa-code icon-large ml-4"></i>
+            </div>
+            <h1 class="text-6xl font-bold text-main mb-6">AIを活用した社内コード開発ガイドライン</h1>
+            <div class="bg-gray-100 p-6 rounded-lg mb-6">
+                <h2 class="text-3xl font-semibold text-dark mb-4">焦点: Google Apps Script (GAS) と GitHub の簡単・安全な導入</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-8 text-xl">
+                <div class="text-left">
+                    <p class="mb-2"><i class="fas fa-user-tie text-main mr-2"></i><strong>担当:</strong> AI推進プロジェクト</p>
+                    <p class="mb-2"><i class="fas fa-target text-main mr-2"></i><strong>目的:</strong> 業務を楽にしつつ、セキュリティを確保</p>
+                </div>
+                <div class="text-left">
+                    <p class="mb-2"><i class="fas fa-users text-main mr-2"></i><strong>対象:</strong> コード初心者を含む全社員</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド2: 全体方針 -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">基本方針</h1>
+    
+    <div class="grid grid-cols-2 gap-8">
+        <div>
+            <h2 class="text-3xl font-semibold text-dark mb-6">基本方針</h2>
+            <div class="space-y-4">
+                <div class="step-box">
+                    <i class="fas fa-robot text-main mr-3"></i>
+                    <strong>AI活用:</strong> Google Gemini や GitHub Copilot でコード作成をサポート
+                </div>
+                <div class="step-box">
+                    <i class="fas fa-shield-alt text-main mr-3"></i>
+                    <strong>セキュリティ第一:</strong> データ漏洩やミスを防ぐ
+                </div>
+                <div class="step-box">
+                    <i class="fas fa-users-cog text-main mr-3"></i>
+                    <strong>コードチェック:</strong> AIが作ったコードは2人以上で確認
+                </div>
+                <div class="step-box">
+                    <i class="fas fa-history text-main mr-3"></i>
+                    <strong>履歴管理:</strong> GitHubで変更を記録
+                </div>
+            </div>
+            
+            <h2 class="text-3xl font-semibold text-dark mb-6 mt-8">注意事項</h2>
+            <div class="space-y-4">
+                <div class="bg-red-50 border-l-4 border-red-400 p-4">
+                    <i class="fas fa-exclamation-triangle text-red-500 mr-3"></i>
+                    <strong>機密情報:</strong> 社内データはAIに入力しない、許可が必要
+                </div>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                    <i class="fas fa-gavel text-yellow-500 mr-3"></i>
+                    <strong>ルール:</strong> AIコードは社内ルールに従う
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex items-center justify-center">
+            <div class="w-full">
+                <h3 class="text-2xl font-semibold text-center mb-6">開発フロー</h3>
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="w-32 h-16 main-color rounded-lg flex items-center justify-center text-white font-bold">
+                        <i class="fas fa-lightbulb mr-2"></i>アイデア
+                    </div>
+                    <i class="fas fa-arrow-down text-main text-2xl"></i>
+                    <div class="w-32 h-16 sub-color-1 rounded-lg flex items-center justify-center text-white font-bold">
+                        <i class="fas fa-robot mr-2"></i>AIコード
+                    </div>
+                    <i class="fas fa-arrow-down text-main text-2xl"></i>
+                    <div class="w-32 h-16 sub-color-2 rounded-lg flex items-center justify-center text-dark font-bold">
+                        <i class="fas fa-search mr-2"></i>チェック
+                    </div>
+                    <i class="fas fa-arrow-down text-main text-2xl"></i>
+                    <div class="w-32 h-16 gray-color rounded-lg flex items-center justify-center text-dark font-bold">
+                        <i class="fab fa-github mr-2"></i>GitHub
+                    </div>
+                    <i class="fas fa-arrow-down text-main text-2xl"></i>
+                    <div class="w-32 h-16 dark-color rounded-lg flex items-center justify-center text-white font-bold">
+                        <i class="fas fa-play mr-2"></i>実行
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド3: GAS開始のステップ -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">GAS開始のステップ（簡単版）</h1>
+    
+    <div class="grid grid-cols-3 gap-6">
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-user-circle mr-2"></i>ステップ1: Googleアカウント準備
+            </h2>
+            <ul class="space-y-2">
+                <li><i class="fas fa-envelope text-main mr-2"></i>社内メール (例: user@company.com) を確認</li>
+                <li><i class="fas fa-sign-in-alt text-main mr-2"></i>Googleにログイン、2段階認証をオン</li>
+                <li><i class="fab fa-chrome text-main mr-2"></i>Chromeブラウザを使う</li>
+            </ul>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-project-diagram mr-2"></i>ステップ2: GASプロジェクトを始める
+            </h2>
+            <ul class="space-y-2">
+                <li><i class="fab fa-google-drive text-main mr-2"></i>Google Driveを開く → 「新規」 → 「Google Apps Script」</li>
+                <li><i class="fas fa-tag text-main mr-2"></i>名前をつける: 例「MyAutomation」</li>
+                <li><i class="fas fa-code text-main mr-2"></i>初期コードは空でOK</li>
+            </ul>
+            <div class="code-block mt-4">
+function myFunction() {<br>
+&nbsp;&nbsp;// ここにコードを書く<br>
+}
+            </div>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-tools mr-2"></i>ステップ3: ツール準備
+            </h2>
+            <ul class="space-y-2">
+                <li><i class="fas fa-globe text-main mr-2"></i>GASのウェブエディタを使う（特別なインストール不要）</li>
+                <li><i class="fab fa-github text-main mr-2"></i>後でGitHubとつなぐなら「clasp」を使う</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="mt-8">
+        <h2 class="text-3xl font-semibold text-dark mb-4 text-center">チェックリスト</h2>
+        <div class="bg-sub-color-2 p-6 rounded-lg">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b-2 border-main">
+                        <th class="text-left py-2 text-xl font-semibold">項目</th>
+                        <th class="text-left py-2 text-xl font-semibold">確認</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b">
+                        <td class="py-2"><i class="fas fa-user text-main mr-2"></i>アカウント</td>
+                        <td class="py-2"><i class="fas fa-check-circle text-green-500 mr-2"></i>2段階認証オン</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2"><i class="fas fa-project-diagram text-main mr-2"></i>プロジェクト</td>
+                        <td class="py-2"><i class="fas fa-check-circle text-green-500 mr-2"></i>名前をつけた</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2"><i class="fas fa-edit text-main mr-2"></i>エディタ</td>
+                        <td class="py-2"><i class="fas fa-check-circle text-green-500 mr-2"></i>ウェブエディタで開始</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- スライド4: GASで安全にコードを書くステップ -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">GASで安全にコードを書くステップ</h1>
+    
+    <div class="grid grid-cols-2 gap-8">
+        <div>
+            <div class="step-box mb-6">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-key mr-2"></i>ステップ1: 必要な権限だけ使う
+                </h2>
+                <p class="mb-2">GASが触る範囲を最小限に</p>
+                <p class="text-sm text-gray-600">例: スプレッドシートだけ使うなら、エディタで「スプレッドシート」を選択</p>
+            </div>
+            
+            <div class="step-box mb-6">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-shield-alt mr-2"></i>ステップ2: 秘密の情報を守る
+                </h2>
+                <p class="mb-2">APIキーやパスワードはコードに直接書かない</p>
+                <p class="mb-2">GASの「スクリプトプロパティ」に保存:</p>
+                <div class="code-block">
+// キーを保存（初回のみ）<br>
+function saveKey() {<br>
+&nbsp;&nbsp;PropertiesService.getScriptProperties()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.setProperty('MY_KEY', 'your-key');<br>
+}<br>
+// キーを使う<br>
+function useKey() {<br>
+&nbsp;&nbsp;var key = PropertiesService.getScriptProperties()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.getProperty('MY_KEY');<br>
+&nbsp;&nbsp;// ここでキーを使う<br>
+}
+                </div>
+            </div>
+            
+            <div class="step-box">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-check-double mr-2"></i>ステップ3: 入力チェック
+                </h2>
+                <p class="mb-2">ユーザーの入力（例: フォームデータ）は正しく確認</p>
+                <p class="mb-2">例: メールアドレスをチェック:</p>
+                <div class="code-block">
+function checkEmail(email) {<br>
+&nbsp;&nbsp;if (!email.includes('@')) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;throw new Error('メールアドレスが正しくありません');<br>
+&nbsp;&nbsp;}<br>
+}
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex items-center justify-center">
+            <div class="w-full">
+                <h3 class="text-2xl font-semibold text-center mb-6">安全な開発フロー</h3>
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="w-48 h-20 main-color rounded-lg flex items-center justify-center text-white font-bold text-center">
+                        <div>
+                            <i class="fas fa-lock mb-2 text-2xl block"></i>
+                            権限設定
+                        </div>
+                    </div>
+                    <i class="fas fa-arrow-down text-main text-3xl"></i>
+                    <div class="w-48 h-20 sub-color-1 rounded-lg flex items-center justify-center text-white font-bold text-center">
+                        <div>
+                            <i class="fas fa-user-secret mb-2 text-2xl block"></i>
+                            秘密管理
+                        </div>
+                    </div>
+                    <i class="fas fa-arrow-down text-main text-3xl"></i>
+                    <div class="w-48 h-20 sub-color-2 rounded-lg flex items-center justify-center text-dark font-bold text-center">
+                        <div>
+                            <i class="fas fa-clipboard-check mb-2 text-2xl block"></i>
+                            入力チェック
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-green-50 border-l-4 border-green-400 p-4">
+                    <h4 class="font-semibold text-green-800 mb-2">
+                        <i class="fas fa-lightbulb mr-2"></i>セキュリティのポイント
+                    </h4>
+                    <ul class="text-sm text-green-700 space-y-1">
+                        <li>• 最小権限の原則を守る</li>
+                        <li>• 機密情報は外部に出さない</li>
+                        <li>• 入力値は必ず検証する</li>
+                        <li>• エラーハンドリングを忘れずに</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド5: GASのテストと公開のステップ -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">GASのテストと公開のステップ</h1>
+    
+    <div class="grid grid-cols-3 gap-6">
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-vial mr-2"></i>ステップ1: コードをテスト
+            </h2>
+            <p class="mb-4">簡単なテストコードを書く:</p>
+            <div class="code-block mb-4">
+function testMyCode() {<br>
+&nbsp;&nbsp;var result = myFunction(2, 3); // 例: 足し算<br>
+&nbsp;&nbsp;if (result !== 5) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Logger.log('テスト失敗！');<br>
+&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Logger.log('テスト成功！');<br>
+&nbsp;&nbsp;}<br>
+}
+            </div>
+            <p><i class="fas fa-play text-main mr-2"></i>エディタの「実行」ボタンで確認</p>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-clock mr-2"></i>ステップ2: トリガーを試す
+            </h2>
+            <ul class="space-y-3">
+                <li><i class="fas fa-table text-main mr-2"></i>例: スプレッドシート編集時に動くコードなら、シートを編集してテスト</li>
+                <li><i class="fas fa-cog text-main mr-2"></i>エディタで「トリガー」設定を確認</li>
+            </ul>
+            <div class="bg-blue-50 border border-blue-200 p-3 mt-4 rounded">
+                <h4 class="font-semibold text-blue-800 mb-2">
+                    <i class="fas fa-info-circle mr-2"></i>トリガーの種類
+                </h4>
+                <ul class="text-sm text-blue-700 space-y-1">
+                    <li>• 時間ベース（定期実行）</li>
+                    <li>• スプレッドシート編集時</li>
+                    <li>• フォーム送信時</li>
+                    <li>• ドキュメント開く時</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-rocket mr-2"></i>ステップ3: 公開
+            </h2>
+            <ul class="space-y-3">
+                <li><i class="fas fa-upload text-main mr-2"></i>エディタで「デプロイ」 → 「ウェブアプリ」</li>
+                <li><i class="fas fa-users text-main mr-2"></i>設定: 「自分だけ実行」「社内のみアクセス」</li>
+            </ul>
+            <div class="bg-yellow-50 border border-yellow-200 p-3 mt-4 rounded">
+                <h4 class="font-semibold text-yellow-800 mb-2">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>公開時の注意
+                </h4>
+                <ul class="text-sm text-yellow-700 space-y-1">
+                    <li>• アクセス権限を適切に設定</li>
+                    <li>• 実行権限を制限</li>
+                    <li>• URLの管理を厳重に</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-8 bg-sub-color-2 p-6 rounded-lg">
+        <h2 class="text-3xl font-semibold text-dark mb-6 text-center">テスト・公開フロー</h2>
+        <div class="flex justify-center items-center space-x-8">
+            <div class="text-center">
+                <div class="w-24 h-24 main-color rounded-full flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-code text-2xl"></i>
+                </div>
+                <p class="font-semibold">コード作成</p>
+            </div>
+            <i class="fas fa-arrow-right text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-24 h-24 sub-color-1 rounded-full flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-vial text-2xl"></i>
+                </div>
+                <p class="font-semibold">テスト実行</p>
+            </div>
+            <i class="fas fa-arrow-right text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-24 h-24 sub-color-2 rounded-full flex items-center justify-center text-dark mb-2">
+                    <i class="fas fa-clock text-2xl"></i>
+                </div>
+                <p class="font-semibold">トリガー確認</p>
+            </div>
+            <i class="fas fa-arrow-right text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-24 h-24 gray-color rounded-full flex items-center justify-center text-dark mb-2">
+                    <i class="fas fa-rocket text-2xl"></i>
+                </div>
+                <p class="font-semibold">本番公開</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド6: GitHub開始のステップ -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">GitHub開始のステップ</h1>
+    
+    <div class="grid grid-cols-3 gap-6">
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fab fa-github mr-2"></i>ステップ1: リポジトリ作成
+            </h2>
+            <ul class="space-y-3">
+                <li><i class="fas fa-sign-in-alt text-main mr-2"></i>社内のGitHub Enterpriseにログイン（管理者から招待メール）</li>
+                <li><i class="fas fa-plus text-main mr-2"></i>新しいリポジトリ作成: 例「company/my-gas-project」、非公開設定</li>
+            </ul>
+            <div class="bg-blue-50 border border-blue-200 p-3 mt-4 rounded">
+                <h4 class="font-semibold text-blue-800 mb-2">
+                    <i class="fas fa-info-circle mr-2"></i>リポジトリ設定
+                </h4>
+                <ul class="text-sm text-blue-700 space-y-1">
+                    <li>• プライベートリポジトリを選択</li>
+                    <li>• 適切な命名規則を守る</li>
+                    <li>• README初期化にチェック</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-laptop-code mr-2"></i>ステップ2: ローカル準備
+            </h2>
+            <ul class="space-y-3">
+                <li><i class="fab fa-git-alt text-main mr-2"></i>GitをPCにインストール: ターミナルで <code class="bg-gray-200 px-2 py-1 rounded">git --version</code></li>
+                <li><i class="fas fa-download text-main mr-2"></i>GASとGitHubをつなぐclasp: <code class="bg-gray-200 px-2 py-1 rounded">npm install -g @google/clasp</code></li>
+                <li><i class="fas fa-sign-in-alt text-main mr-2"></i>claspログイン: <code class="bg-gray-200 px-2 py-1 rounded">clasp login</code>（Googleアカウントで認証）</li>
+            </ul>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-cog mr-2"></i>ステップ3: 初期設定
+            </h2>
+            <p class="mb-2">.gitignoreファイル作成（秘密ファイルを除外）:</p>
+            <div class="code-block mb-4">
+node_modules/<br>
+.env<br>
+*.log<br>
+appsscript.json
+            </div>
+            <p><i class="fas fa-file-alt text-main mr-2"></i>README.mdにプロジェクトの説明を書く</p>
+        </div>
+    </div>
+    
+    <div class="mt-8">
+        <h2 class="text-3xl font-semibold text-dark mb-6 text-center">GitHub設定フロー</h2>
+        <div class="bg-sub-color-2 p-6 rounded-lg">
+            <div class="flex justify-center items-center space-x-6">
+                <div class="text-center">
+                    <div class="w-20 h-20 main-color rounded-lg flex items-center justify-center text-white mb-2">
+                        <i class="fas fa-user-plus text-xl"></i>
+                    </div>
+                    <p class="font-semibold text-sm">アカウント<br>作成・招待</p>
+                </div>
+                <i class="fas fa-arrow-right text-main text-2xl"></i>
+                <div class="text-center">
+                    <div class="w-20 h-20 sub-color-1 rounded-lg flex items-center justify-center text-white mb-2">
+                        <i class="fab fa-github text-xl"></i>
+                    </div>
+                    <p class="font-semibold text-sm">リポジトリ<br>作成</p>
+                </div>
+                <i class="fas fa-arrow-right text-main text-2xl"></i>
+                <div class="text-center">
+                    <div class="w-20 h-20 sub-color-2 rounded-lg flex items-center justify-center text-dark mb-2">
+                        <i class="fas fa-download text-xl"></i>
+                    </div>
+                    <p class="font-semibold text-sm">ツール<br>インストール</p>
+                </div>
+                <i class="fas fa-arrow-right text-main text-2xl"></i>
+                <div class="text-center">
+                    <div class="w-20 h-20 gray-color rounded-lg flex items-center justify-center text-dark mb-2">
+                        <i class="fas fa-cog text-xl"></i>
+                    </div>
+                    <p class="font-semibold text-sm">初期設定<br>完了</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド7: GitHubを安全に使うステップ -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">GitHubを安全に使うステップ</h1>
+    
+    <div class="grid grid-cols-2 gap-8">
+        <div>
+            <div class="step-box mb-6">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-shield-alt mr-2"></i>ステップ1: アカウント保護
+                </h2>
+                <ul class="space-y-2">
+                    <li><i class="fas fa-mobile-alt text-main mr-2"></i>2段階認証を全員オン</li>
+                    <li><i class="fas fa-user-shield text-main mr-2"></i>権限: ITチームが管理者、開発者は編集権限のみ</li>
+                </ul>
+            </div>
+            
+            <div class="step-box mb-6">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-code-branch mr-2"></i>ステップ2: ブランチ保護
+                </h2>
+                <ul class="space-y-2">
+                    <li><i class="fas fa-lock text-main mr-2"></i>mainブランチは直接編集禁止</li>
+                    <li><i class="fas fa-cog text-main mr-2"></i>設定: GitHubの「Settings」 → 「Branches」 → 「Add rule」 → PR必須</li>
+                </ul>
+            </div>
+            
+            <div class="step-box">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-key mr-2"></i>ステップ3: 秘密情報管理
+                </h2>
+                <ul class="space-y-2">
+                    <li><i class="fas fa-vault text-main mr-2"></i>APIキーなどはGitHubの「Settings」 → 「Secrets」に保存</li>
+                    <li><i class="fas fa-ban text-main mr-2"></i>コードに直接書かない</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <h2 class="text-3xl font-semibold text-dark mb-6 text-center">セキュリティ設定一覧</h2>
+            <div class="bg-sub-color-2 p-6 rounded-lg">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2 border-main">
+                            <th class="text-left py-3 text-xl font-semibold">項目</th>
+                            <th class="text-left py-3 text-xl font-semibold">設定</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="py-3"><i class="fas fa-mobile-alt text-main mr-2"></i>2段階認証</td>
+                            <td class="py-3"><span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">全員オン</span></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3"><i class="fas fa-code-branch text-main mr-2"></i>mainブランチ</td>
+                            <td class="py-3"><span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">PR必須、2人承認</span></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3"><i class="fas fa-key text-main mr-2"></i>秘密情報</td>
+                            <td class="py-3"><span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Secretsに保存</span></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3"><i class="fas fa-users text-main mr-2"></i>アクセス権限</td>
+                            <td class="py-3"><span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">最小権限</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3"><i class="fas fa-history text-main mr-2"></i>監査ログ</td>
+                            <td class="py-3"><span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">自動記録</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-6 bg-red-50 border-l-4 border-red-400 p-4">
+                <h4 class="font-semibold text-red-800 mb-2">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>重要な注意事項
+                </h4>
+                <ul class="text-sm text-red-700 space-y-1">
+                    <li>• パスワードやAPIキーをコードに直接書かない</li>
+                    <li>• mainブランチへの直接pushは禁止</li>
+                    <li>• すべての変更は Pull Request を通す</li>
+                    <li>• 定期的にアクセス権限を見直す</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド8: GitHubとGASをつなぐステップ -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">GitHubとGASをつなぐステップ</h1>
+    
+    <div class="grid grid-cols-3 gap-6">
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-sync mr-2"></i>ステップ1: claspで同期
+            </h2>
+            <p class="mb-2">ターミナルで:</p>
+            <div class="code-block mb-4">
+clasp create --title "MyAutomation"
+            </div>
+            <p class="mb-2">コードをGitHubに送る:</p>
+            <div class="code-block">
+clasp push
+            </div>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-code-branch mr-2"></i>ステップ2: 変更管理
+            </h2>
+            <p class="mb-2">コード変更後:</p>
+            <div class="code-block">
+git add .<br>
+git commit -m "GASコード追加"<br>
+git push origin main
+            </div>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-users mr-2"></i>ステップ3: チーム作業
+            </h2>
+            <p class="mb-2">新機能はブランチ作成:</p>
+            <div class="code-block mb-4">
+git checkout -b feature/new-function
+            </div>
+            <p class="mb-2">Pull Request (PR) でチームにチェック依頼</p>
+        </div>
+    </div>
+    
+    <div class="mt-8">
+        <h2 class="text-3xl font-semibold text-dark mb-6 text-center">コマンド例</h2>
+        <div class="bg-dark-color p-6 rounded-lg text-white">
+            <div class="code-block bg-gray-800 text-green-400 border-l-4 border-green-400">
+clasp create --title "MyAutomation"<br>
+clasp push<br>
+git add . &amp;&amp; git commit -m "Initial GAS code" &amp;&amp; git push origin main
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-8 bg-sub-color-2 p-6 rounded-lg">
+        <h2 class="text-2xl font-semibold text-dark mb-6 text-center">GAS ⇄ GitHub 連携フロー</h2>
+        <div class="flex justify-center items-center space-x-6">
+            <div class="text-center">
+                <div class="w-24 h-24 main-color rounded-lg flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-code text-2xl"></i>
+                </div>
+                <p class="font-semibold">GASで<br>コード作成</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-arrow-right text-main text-xl"></i>
+                <span class="text-xs text-gray-600 mt-1">clasp push</span>
+            </div>
+            <div class="text-center">
+                <div class="w-24 h-24 sub-color-1 rounded-lg flex items-center justify-center text-white mb-2">
+                    <i class="fab fa-github text-2xl"></i>
+                </div>
+                <p class="font-semibold">GitHubに<br>保存</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-arrow-right text-main text-xl"></i>
+                <span class="text-xs text-gray-600 mt-1">git push</span>
+            </div>
+            <div class="text-center">
+                <div class="w-24 h-24 sub-color-2 rounded-lg flex items-center justify-center text-dark mb-2">
+                    <i class="fas fa-eye text-2xl"></i>
+                </div>
+                <p class="font-semibold">チーム<br>レビュー</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-arrow-right text-main text-xl"></i>
+                <span class="text-xs text-gray-600 mt-1">PR merge</span>
+            </div>
+            <div class="text-center">
+                <div class="w-24 h-24 gray-color rounded-lg flex items-center justify-center text-dark mb-2">
+                    <i class="fas fa-rocket text-2xl"></i>
+                </div>
+                <p class="font-semibold">本番<br>デプロイ</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド9: AIを活用するステップ -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">AIを活用するステップ</h1>
+    
+    <div class="grid grid-cols-2 gap-8">
+        <div>
+            <div class="step-box mb-6">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-robot mr-2"></i>ステップ1: AIに指示
+                </h2>
+                <p class="mb-2">例: 「GASでスプレッドシートのA列を合計してB1に書くコード。安全でエラー処理付き」</p>
+                <h4 class="font-semibold mb-2">AIが作ったコード例:</h4>
+                <div class="code-block">
+function sumColumn() {<br>
+&nbsp;&nbsp;try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;var sheet = SpreadsheetApp.getActiveSheet();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;var data = sheet.getRange('A1:A100').getValues();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;var sum = data.reduce((total, row) =&gt; total + row[0], 0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sheet.getRange('B1').setValue(sum);<br>
+&nbsp;&nbsp;} catch (e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Logger.log('エラー: ' + e.message);<br>
+&nbsp;&nbsp;}<br>
+}
+                </div>
+            </div>
+            
+            <div class="step-box mb-6">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-search mr-2"></i>ステップ2: コードチェック
+                </h2>
+                <ul class="space-y-2">
+                    <li><i class="fas fa-check-circle text-main mr-2"></i>確認: 権限は最小か、秘密情報は入っていないか</li>
+                    <li><i class="fas fa-play text-main mr-2"></i>テスト: エディタで実行して結果確認</li>
+                </ul>
+            </div>
+            
+            <div class="step-box">
+                <h2 class="text-2xl font-semibold text-main mb-4">
+                    <i class="fas fa-clipboard-list mr-2"></i>ステップ3: 記録
+                </h2>
+                <ul class="space-y-2">
+                    <li><i class="fab fa-github text-main mr-2"></i>AIの指示とコードをGitHub Issueに保存</li>
+                    <li><i class="fas fa-tag text-main mr-2"></i>例: 「プロンプト: A列合計」「コード: sumColumn関数」</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <h2 class="text-2xl font-semibold text-dark mb-6 text-center">AI活用のベストプラクティス</h2>
+            
+            <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+                <h4 class="font-semibold text-green-800 mb-2">
+                    <i class="fas fa-lightbulb mr-2"></i>効果的なプロンプトのコツ
+                </h4>
+                <ul class="text-sm text-green-700 space-y-1">
+                    <li>• 具体的な要件を明確に記述</li>
+                    <li>• セキュリティ要件を必ず含める</li>
+                    <li>• エラーハンドリングを要求</li>
+                    <li>• 想定される使用状況を説明</li>
+                </ul>
+            </div>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                <h4 class="font-semibold text-yellow-800 mb-2">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>チェックポイント
+                </h4>
+                <ul class="text-sm text-yellow-700 space-y-1">
+                    <li>• APIキーやパスワードが含まれていないか</li>
+                    <li>• 適切なエラーハンドリングがあるか</li>
+                    <li>• 必要最小限の権限で動作するか</li>
+                    <li>• コメントが適切に記載されているか</li>
+                </ul>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                <h4 class="font-semibold text-blue-800 mb-2">
+                    <i class="fas fa-users mr-2"></i>チーム協力
+                </h4>
+                <ul class="text-sm text-blue-700 space-y-1">
+                    <li>• AIで生成したコードは必ず2人以上でレビュー</li>
+                    <li>• プロンプトの内容もチームで共有</li>
+                    <li>• 成功事例を社内で蓄積・共有</li>
+                    <li>• 定期的にAI活用方法を見直し</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-8 bg-sub-color-2 p-6 rounded-lg">
+        <h2 class="text-2xl font-semibold text-dark mb-6 text-center">AI活用プロセス</h2>
+        <div class="flex justify-center items-center space-x-6">
+            <div class="text-center">
+                <div class="w-20 h-20 main-color rounded-full flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-lightbulb text-xl"></i>
+                </div>
+                <p class="font-semibold text-sm">要件<br>整理</p>
+            </div>
+            <i class="fas fa-arrow-right text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-20 h-20 sub-color-1 rounded-full flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-robot text-xl"></i>
+                </div>
+                <p class="font-semibold text-sm">AI<br>指示</p>
+            </div>
+            <i class="fas fa-arrow-right text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-20 h-20 sub-color-2 rounded-full flex items-center justify-center text-dark mb-2">
+                    <i class="fas fa-code text-xl"></i>
+                </div>
+                <p class="font-semibold text-sm">コード<br>生成</p>
+            </div>
+            <i class="fas fa-arrow-right text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-20 h-20 gray-color rounded-full flex items-center justify-center text-dark mb-2">
+                    <i class="fas fa-search text-xl"></i>
+                </div>
+                <p class="font-semibold text-sm">レビュー<br>チェック</p>
+            </div>
+            <i class="fas fa-arrow-right text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-20 h-20 dark-color rounded-full flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-save text-xl"></i>
+                </div>
+                <p class="font-semibold text-sm">記録<br>保存</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド10: 導入とモニタリングのステップ -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">導入とモニタリングのステップ</h1>
+    
+    <div class="grid grid-cols-3 gap-6">
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-rocket mr-2"></i>ステップ1: 社内スタート
+            </h2>
+            <ul class="space-y-3">
+                <li><i class="fas fa-upload text-main mr-2"></i>ガイドを社内サイトにアップ、メールで通知</li>
+                <li><i class="fas fa-file-code text-main mr-2"></i>テンプレート配布: GASコード例、GitHub設定例</li>
+                <li><i class="fas fa-calendar-alt text-main mr-2"></i>月1回ワークショップ: 「GASで簡単自動化」</li>
+            </ul>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-shield-alt mr-2"></i>ステップ2: チェック体制
+            </h2>
+            <ul class="space-y-3">
+                <li><i class="fas fa-robot text-main mr-2"></i>週1でGitHubのDependabotで脆弱性チェック</li>
+                <li><i class="fas fa-exclamation-triangle text-main mr-2"></i>問題発生時: リポジトリをロック、ITチームに報告</li>
+            </ul>
+        </div>
+        
+        <div class="step-box">
+            <h2 class="text-2xl font-semibold text-main mb-4">
+                <i class="fas fa-chart-line mr-2"></i>ステップ3: 改善
+            </h2>
+            <ul class="space-y-3">
+                <li><i class="fas fa-poll text-main mr-2"></i>3か月に1回、アンケートで意見集め</li>
+                <li><i class="fas fa-sync text-main mr-2"></i>年1回ガイドを更新</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="mt-8">
+        <h2 class="text-3xl font-semibold text-dark mb-6 text-center">実装スケジュール</h2>
+        <div class="bg-sub-color-2 p-6 rounded-lg">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b-2 border-main">
+                        <th class="text-left py-3 text-xl font-semibold">フェーズ</th>
+                        <th class="text-left py-3 text-xl font-semibold">内容</th>
+                        <th class="text-left py-3 text-xl font-semibold">期限</th>
+                        <th class="text-left py-3 text-xl font-semibold">担当</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b">
+                        <td class="py-3"><span class="bg-main text-white px-3 py-1 rounded-full text-sm font-semibold">準備</span></td>
+                        <td class="py-3">ガイド共有</td>
+                        <td class="py-3">1ヶ月</td>
+                        <td class="py-3">AI推進プロジェクト</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3"><span class="bg-sub-color-1 text-white px-3 py-1 rounded-full text-sm font-semibold">学習</span></td>
+                        <td class="py-3">ワークショップ</td>
+                        <td class="py-3">3ヶ月</td>
+                        <td class="py-3">各部署リーダー</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3"><span class="bg-gray-color text-dark px-3 py-1 rounded-full text-sm font-semibold">運用</span></td>
+                        <td class="py-3">チェック継続</td>
+                        <td class="py-3">継続</td>
+                        <td class="py-3">ITチーム</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3"><span class="bg-dark-color text-white px-3 py-1 rounded-full text-sm font-semibold">改善</span></td>
+                        <td class="py-3">定期見直し</td>
+                        <td class="py-3">四半期</td>
+                        <td class="py-3">全チーム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="mt-8 grid grid-cols-2 gap-6">
+        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+            <h4 class="font-semibold text-green-800 mb-2">
+                <i class="fas fa-check-circle mr-2"></i>成功指標 (KPI)
+            </h4>
+            <ul class="text-sm text-green-700 space-y-1">
+                <li>• 月間GASプロジェクト作成数</li>
+                <li>• セキュリティインシデント件数（目標：0件）</li>
+                <li>• ワークショップ参加率</li>
+                <li>• 業務効率化時間の短縮</li>
+            </ul>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <h4 class="font-semibold text-blue-800 mb-2">
+                <i class="fas fa-tools mr-2"></i>サポート体制
+            </h4>
+            <ul class="text-sm text-blue-700 space-y-1">
+                <li>• 社内Slackチャンネル: #gas-github-support</li>
+                <li>• 週1回オフィスアワー（質問対応）</li>
+                <li>• FAQ資料の継続更新</li>
+                <li>• エキスパート制度（社内講師育成）</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- スライド11: まとめと次アクション -->
+<div class="slide">
+    <h1 class="text-5xl font-bold text-main mb-8 text-center">まとめと次アクション</h1>
+    
+    <div class="grid grid-cols-2 gap-8">
+        <div>
+            <h2 class="text-3xl font-semibold text-dark mb-6">
+                <i class="fas fa-trophy mr-3"></i>まとめ
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-main text-white p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">
+                        <i class="fas fa-code mr-2"></i>GAS
+                    </h3>
+                    <p>簡単なステップで業務を楽に、安全第一</p>
+                </div>
+                <div class="bg-sub-color-1 text-white p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">
+                        <i class="fab fa-github mr-2"></i>GitHub
+                    </h3>
+                    <p>チーム作業を安全に管理</p>
+                </div>
+                <div class="bg-sub-color-2 text-dark p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">
+                        <i class="fas fa-robot mr-2"></i>AI
+                    </h3>
+                    <p>正しい指示でコードを楽に、必ずチェック</p>
+                </div>
+                <div class="bg-gray-color text-dark p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">
+                        <i class="fas fa-target mr-2"></i>目標
+                    </h3>
+                    <p>仕事が2倍楽に、トラブルゼロ</p>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h2 class="text-3xl font-semibold text-dark mb-6">
+                <i class="fas fa-play mr-3"></i>次アクション
+            </h2>
+            <div class="space-y-4 mb-8">
+                <div class="step-box">
+                    <h3 class="font-semibold text-main mb-2">
+                        <i class="fas fa-rocket mr-2"></i>今すぐ開始
+                    </h3>
+                    <p>今すぐガイドを使い始める</p>
+                </div>
+                <div class="step-box">
+                    <h3 class="font-semibold text-main mb-2">
+                        <i class="fas fa-envelope mr-2"></i>サポート連絡先
+                    </h3>
+                    <p>質問はメール: ai-specialist@company.com</p>
+                </div>
+                <div class="step-box">
+                    <h3 class="font-semibold text-main mb-2">
+                        <i class="fas fa-sync mr-2"></i>継続改善
+                    </h3>
+                    <p>年1回ガイド更新</p>
+                </div>
+            </div>
+            
+            <div class="bg-dark-color text-white p-6 rounded-lg text-center">
+                <h2 class="text-4xl font-bold mb-4">
+                    <i class="fas fa-question-circle mr-3"></i>Q&amp;A
+                </h2>
+                <p class="text-2xl">質問をどうぞ！</p>
+                <div class="mt-6 flex justify-center">
+                    <i class="fas fa-users icon-large"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-8 bg-sub-color-2 p-6 rounded-lg">
+        <h2 class="text-2xl font-semibold text-dark mb-4 text-center">
+            <i class="fas fa-handshake mr-2"></i>チームワークで成功へ
+        </h2>
+        <div class="flex justify-center items-center space-x-8">
+            <div class="text-center">
+                <div class="w-20 h-20 main-color rounded-full flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-lightbulb text-xl"></i>
+                </div>
+                <p class="font-semibold">アイデア<br>共有</p>
+            </div>
+            <i class="fas fa-plus text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-20 h-20 sub-color-1 rounded-full flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-users text-xl"></i>
+                </div>
+                <p class="font-semibold">チーム<br>協力</p>
+            </div>
+            <i class="fas fa-plus text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-20 h-20 sub-color-2 rounded-full flex items-center justify-center text-dark mb-2">
+                    <i class="fas fa-shield-alt text-xl"></i>
+                </div>
+                <p class="font-semibold">セキュリティ<br>確保</p>
+            </div>
+            <i class="fas fa-equals text-main text-2xl"></i>
+            <div class="text-center">
+                <div class="w-20 h-20 dark-color rounded-full flex items-center justify-center text-white mb-2">
+                    <i class="fas fa-trophy text-xl"></i>
+                </div>
+                <p class="font-semibold">プロジェクト<br>成功</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script defer="" src="./AIを活用した社内コード開発ガイドライン_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;96e85e2019d0033f&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.7.0&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDgWPdEDBeI9JkVxjldJK5bFEUB0siipbyeUP%2F7zrHb9IcrERWvACIFAGiEsuA8CNk2SG2hYTmqub40gg6Lrd1ldV%2BsfkYJlhjnrZBO9fQnzzbF0Zw557H3TzGh%2FzVUrS%2FOcR8dBT9Qr%2FoLxCAGJOuIcWjIwPjSiTIz7fO9MDV3aE4aa%2BycYA1NUhr3g3NkAG6YBxPpJCIQc9u8Rv3ND1VIMtNtMgXoWCJdz2NGWk3h1hE56Mi%2BN3WlOTzQlVEMHI80gIi4J5NyAUHkLJmycjsYm24W%2FZfp9Mw7sIk05OuEBWPFcL3B%2BzUwkYaAirUTlLwnG11zp94vY%2FfHgSkzUWIBM8DDYDFPw31BDHKQvsw9br5pMXVG1OodCafhoI5IEo8IjGWx94Ryn%2BKQUYF%2Fa29sJcz4VHYHSqUhSejb91rJN98oojybS6lk4ZIaPl%2FwbSYj%2BY5FUtGJdF3lLJ20PFtSpRnOktIQOX3GghW%2FkBF7T4yY%2BN3G2RDRCMXf9GZjU21ujNmKh%2Biy4S583OYiNYWcs%3D";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDgWPdEDBeI9JkVxjldJK5bFEUB0siipbyeUP/7zrHb9IcrERWvACIFAGiEsuA8CNk2SG2hYTmqub40gg6Lrd1ldV+sfkYJlhjnrZBO9fQnzzbF0Zw557H3TzGh/zVUrS/OcR8dBT9Qr/oLxCAGJOuIcWjIwPjSiTIz7fO9MDV3aE4aa+ycYA1NUhr3g3NkAG6YBxPpJCIQc9u8Rv3ND1VIMtNtMgXoWCJdz2NGWk3h1hE56Mi+N3WlOTzQlVEMHI80gIi4J5NyAUHkLJmycjsYm24W/Zfp9Mw7sIk05OuEBWPFcL3B+zUwkYaAirUTlLwnG11zp94vY/fHgSkzUWIBM8DDYDFPw31BDHKQvsw9br5pMXVG1OodCafhoI5IEo8IjGWx94Ryn+KQUYF/a29sJcz4VHYHSqUhSejb91rJN98oojybS6lk4ZIaPl/wbSYj+Y5FUtGJdF3lLJ20PFtSpRnOktIQOX3GghW/kBF7T4yY+N3G2RDRCMXf9GZjU21ujNmKh+iy4S583OYiNYWcs=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="./AIを活用した社内コード開発ガイドライン_files/notice_dialog.js.ダウンロード"></script>
+    </body></html>
