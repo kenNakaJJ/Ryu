@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年7月度 作業実績 詳細分析レポート【完全版】</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #ccedf3 0%, #FFFFFF 100%);
+        }
+        .slide {
+            min-height: 100vh;
+            margin-bottom: 2rem;
+        }
+        .main-color { color: #00a4c5; }
+        .main-bg { background-color: #00a4c5; }
+        .sub-color { color: #80d2e2; }
+        .sub-bg { background-color: #80d2e2; }
+        .light-bg { background-color: #ccedf3; }
+        .dark-color { color: #231815; }
+        .gray-color { color: #E2E2E3; }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- スライド 1: 表紙 -->
+<div class="slide main-bg text-white flex items-center justify-center">
+    <div class="text-center">
+        <h1 class="text-6xl font-bold mb-8">2025年7月度</h1>
+        <h2 class="text-4xl font-light mb-12">作業実績 詳細分析レポート</h2>
+        <div class="text-xl opacity-80">
+            <p>業務のボトルネック分析と効率改善提案</p>
+            <p class="mt-4">全20スライド | 包括的業務分析</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 2: エグゼクティブサマリー -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">エグゼクティブサマリー</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="space-y-6">
+                <div class="p-6 light-bg rounded-lg">
+                    <h3 class="text-xl font-bold dark-color mb-3">📊 総括</h3>
+                    <p class="dark-color">2025年7月の総作業時間は<strong class="main-color">23,073分（約385時間）</strong>、総タスク件数は<strong class="main-color">1,383件</strong>でした。業務の核心は依然として記帳関連業務にあります。</p>
+                </div>
+                <div class="p-6 sub-bg rounded-lg">
+                    <h3 class="text-xl font-bold dark-color mb-3">⚡ 工数の集中</h3>
+                    <p class="dark-color">全作業時間の<strong>75.2%（17,354分）</strong>が「記帳関連業務」に、<strong>11.9%（2,741分）</strong>が「資料回収業務」に費やされており、この2領域で全体の約87%を占めます。</p>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <div class="p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg">
+                    <h3 class="text-xl font-bold dark-color mb-3">⚠️ 担当者への負荷</h3>
+                    <p class="dark-color">作業時間では<strong>「39久保」担当が6,467分</strong>と全体の約28%を占め、突出しています。タスク件数では<strong>「A26石田」担当が202件</strong>と最多で、全体の約15%を処理しています。</p>
+                </div>
+                <div class="p-6 bg-green-50 border-l-4 border-green-400 rounded-lg">
+                    <h3 class="text-xl font-bold dark-color mb-3">🚀 効率化の機会</h3>
+                    <p class="dark-color">作業時間5分以下のタスクが547件あり、全タスクの<strong>39.6%</strong>を占めています。これらの"チリツモ"タスクの効率化が急務です。標準時間と実績時間の乖離が著しく、最大で21.7倍の差が見られます。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 3: 分析の目的とアジェンダ -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">分析の目的とアジェンダ</h2>
+        <div class="grid grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-bold dark-color mb-6 main-bg text-white p-4 rounded-lg">分析の目的</h3>
+                <p class="dark-color text-lg leading-relaxed">2025年7月の作業実績データを多角的に分析し、業務のボトルネック、効率改善の機会、およびリソース配分の最適化に向けた具体的なアクションプランを策定する。</p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold dark-color mb-6 main-bg text-white p-4 rounded-lg">アジェンダ</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center p-3 light-bg rounded-lg">
+                        <span class="main-color font-bold text-xl mr-3">1</span>
+                        <span class="dark-color">全体像の把握: 7月度実績の全体数値と業務カテゴリ別の構成</span>
+                    </div>
+                    <div class="flex items-center p-3 sub-bg rounded-lg">
+                        <span class="main-color font-bold text-xl mr-3">2</span>
+                        <span class="dark-color">詳細分析（誰が・何を）: 担当者別・タスク別の詳細な工数分析</span>
+                    </div>
+                    <div class="flex items-center p-3 light-bg rounded-lg">
+                        <span class="main-color font-bold text-xl mr-3">3</span>
+                        <span class="dark-color">詳細分析（誰に）: 顧客グループ別の作業時間分析</span>
+                    </div>
+                    <div class="flex items-center p-3 sub-bg rounded-lg">
+                        <span class="main-color font-bold text-xl mr-3">4</span>
+                        <span class="dark-color">課題と機会の発見: "チリツモ"タスク、標準時間、特定業務の深掘り</span>
+                    </div>
+                    <div class="flex items-center p-3 light-bg rounded-lg">
+                        <span class="main-color font-bold text-xl mr-3">5</span>
+                        <span class="dark-color">結論とアクションプラン: 分析結果に基づく具体的な改善提案</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 4: 2025年7月度 実績サマリー -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">2025年7月度 実績サマリー</h2>
+        <div class="grid grid-cols-3 gap-6 mb-8">
+            <div class="main-bg text-white p-6 rounded-lg text-center">
+                <h3 class="text-2xl font-bold mb-2">総作業時間</h3>
+                <p class="text-3xl font-bold">23,073分</p>
+                <p class="text-lg opacity-80">（約384.6時間）</p>
+            </div>
+            <div class="sub-bg text-white p-6 rounded-lg text-center">
+                <h3 class="text-2xl font-bold mb-2">総タスク件数</h3>
+                <p class="text-3xl font-bold">1,383件</p>
+            </div>
+            <div class="light-bg dark-color p-6 rounded-lg text-center">
+                <h3 class="text-2xl font-bold mb-2">平均作業時間</h3>
+                <p class="text-3xl font-bold main-color">16.7分</p>
+                <p class="text-lg">1タスクあたり</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold dark-color mb-4">📈 作業時間ランキング</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3 bg-white rounded border-l-4 border-blue-500">
+                        <span class="dark-color">記帳関連業務</span>
+                        <span class="main-color font-bold">17,354分</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-white rounded border-l-4 border-green-500">
+                        <span class="dark-color">その他全般業務（日報・作業記録等）</span>
+                        <span class="main-color font-bold">1,723分</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold dark-color mb-4">📊 タスク件数ランキング</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3 bg-white rounded border-l-4 border-blue-500">
+                        <span class="dark-color">記帳関連業務</span>
+                        <span class="main-color font-bold">732件</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-white rounded border-l-4 border-green-500">
+                        <span class="dark-color">資料回収（顧客からの情報収集）</span>
+                        <span class="main-color font-bold">202件</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 5: プロセス分類別 作業時間シェア -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">【全体像】プロセス分類別 作業時間シェア</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="chart-container">
+                <canvas id="processTimeChart"></canvas>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold dark-color mb-4">解説</h3>
+                <div class="space-y-4">
+                    <div class="p-4 light-bg rounded-lg">
+                        <p class="dark-color"><strong class="main-color">「300番台：記帳関連業務」が17,354分（75.2%）</strong>と、業務時間の4分の3を占めています。この領域のわずかな効率改善が、全体に大きなインパクトを与えます。</p>
+                    </div>
+                    <div class="p-4 sub-bg rounded-lg">
+                        <p class="dark-color"><strong>「100番台：資料回収」は2,741分（11.9%）</strong>で、顧客とのコミュニケーションや情報収集に多くの時間が割かれていることを示しています。</p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-lg">
+                        <p class="dark-color"><strong>「900番台：その他業務」は1,723分（7.5%）</strong>で、日報作成などの間接業務も無視できない工数となっています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 6: プロセス分類別 タスク件数シェア -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">【全体像】プロセス分類別 タスク件数シェア</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="chart-container">
+                <canvas id="processTaskChart"></canvas>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold dark-color mb-4">解説</h3>
+                <div class="space-y-4">
+                    <div class="p-4 light-bg rounded-lg">
+                        <p class="dark-color"><strong class="main-color">「300番台：記帳関連業務」が732件（52.9%）</strong>と、タスク件数でも半数以上を占めています。</p>
+                    </div>
+                    <div class="p-4 sub-bg rounded-lg">
+                        <p class="dark-color">「100番台：資料回収」は202件（14.6%）、<strong>「非定常：HC・本社MTG」は100件（7.2%）</strong>と続きます。</p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-lg">
+                        <p class="dark-color">特に「資料回収」は、1件あたりの時間は短いものの（平均13.6分）、頻度が高い業務であることがわかります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 7: 担当者別作業時間ランキング -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">【担当者別】作業時間ランキング TOP5</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="chart-container">
+                <canvas id="userTimeChart"></canvas>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold dark-color mb-4">解説</h3>
+                <div class="space-y-4">
+                    <div class="p-4 bg-red-50 border-l-4 border-red-400 rounded-lg">
+                        <p class="dark-color">「39久保」担当が<strong class="text-red-600">6,467分</strong>と、2位の「A26石田」担当（2,925分）の2倍以上の作業時間を記録しており、負荷が極端に集中しています。</p>
+                    </div>
+                    <div class="p-4 light-bg rounded-lg">
+                        <p class="dark-color">上位5名で14,756分となり、<strong class="main-color">全体の約64%</strong>の作業時間を占めています。</p>
+                    </div>
+                    <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg">
+                        <p class="dark-color">業務の属人化や、特定担当者の不在が業務停滞に繋がるリスクが高い状態です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 8: 担当者別タスク件数ランキング -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">【担当者別】タスク件数ランキング TOP5</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="chart-container">
+                <canvas id="userTaskChart"></canvas>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold dark-color mb-4">解説</h3>
+                <div class="space-y-4">
+                    <div class="p-4 light-bg rounded-lg">
+                        <p class="dark-color">タスク件数では<strong class="main-color">「A26石田」担当が202件</strong>でトップ。1件あたりの平均作業時間は約14.5分と、短時間タスクを数多くこなしていることがわかります。</p>
+                    </div>
+                    <div class="p-4 sub-bg rounded-lg">
+                        <p class="dark-color">作業時間トップだった<strong>「39久保」担当は162件で2位</strong>。平均作業時間は約39.9分と、比較的重いタスクを扱っていることが示唆されます。</p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-lg">
+                        <p class="dark-color">「大島」担当も119件と多く、幅広い業務をサポートしている可能性があります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 9: 時間消費タスクランキング -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">時間消費タスク（タスク詳細）ランキング TOP10</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="chart-container">
+                <canvas id="taskTimeChart"></canvas>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold dark-color mb-4">解説</h3>
+                <div class="space-y-4">
+                    <div class="p-4 bg-red-50 border-l-4 border-red-400 rounded-lg">
+                        <p class="dark-color"><strong class="text-red-600">1位の「その他全般業務（日報・作業記録等）」</strong>は1,723分を記録。これは間接業務であり、削減の余地がないか検討が必要です。</p>
+                    </div>
+                    <div class="p-4 light-bg rounded-lg">
+                        <p class="dark-color">2位、3位、5位に<strong class="main-color">「レビュー」関連タスクがランクインしており、合計で2,279分</strong>。品質保証活動に多くの工数がかかっています。</p>
+                    </div>
+                    <div class="p-4 sub-bg rounded-lg">
+                        <p class="dark-color">「預金・クレカ取引関連」「記帳関連その他業務」といった直接的な記帳作業も上位を占めています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 10: 顧客グループ別作業時間分析 -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">顧客グループ別 作業時間分析</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="chart-container">
+                <canvas id="customerGroupChart"></canvas>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold dark-color mb-4">解説</h3>
+                <div class="space-y-4">
+                    <div class="p-4 light-bg rounded-lg">
+                        <p class="dark-color">顧客を担当する報告者グループで作業時間を集計すると、<strong class="main-color">「39久保」グループが7,823分</strong>と最も多くなっています。</p>
+                    </div>
+                    <div class="p-4 sub-bg rounded-lg">
+                        <p class="dark-color">次いで「A24松井」グループが3,524分、「A26石田」グループが3,215分と続きます。</p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-lg">
+                        <p class="dark-color">これは、担当する顧客の数や案件の複雑さがグループごとに異なることを示唆しており、リソース配分の見直しや、グループ間での負荷平準化を検討する際の基礎データとなります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 11: チリツモタスクの実態分析 -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">【課題①】"チリツモ"タスクの実態分析</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div>
+                <div class="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6 mb-6">
+                    <h3 class="text-2xl font-bold text-yellow-800 mb-4">⚠️ 重要な発見</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-white rounded border-l-4 border-yellow-500">
+                            <span class="dark-color">5分以下タスク数</span>
+                            <span class="text-yellow-700 font-bold text-xl">547件</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded border-l-4 border-yellow-500">
+                            <span class="dark-color">全体に占める割合</span>
+                            <span class="text-yellow-700 font-bold text-xl">39.6%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded border-l-4 border-yellow-500">
+                            <span class="dark-color">合計作業時間</span>
+                            <span class="text-yellow-700 font-bold text-xl">2,364分</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold dark-color mb-4">観察と考察</h3>
+                <div class="space-y-4">
+                    <div class="p-4 light-bg rounded-lg">
+                        <p class="dark-color">作業時間5分以下のタスクは、全1,383件中547件あり、<strong class="main-color">総件数の39.6%</strong>を占めています。</p>
+                    </div>
+                    <div class="p-4 sub-bg rounded-lg">
+                        <p class="dark-color">これらのタスクの合計作業時間は2,364分で、<strong class="main-color">総作業時間の10.2%</strong>に相当します。</p>
+                    </div>
+                    <div class="p-4 bg-gray-100 rounded-lg">
+                        <h4 class="font-bold dark-color mb-2">主な内訳:</h4>
+                        <ul class="dark-color space-y-1">
+                            <li>• 資料回収（顧客からの情報収集）：100件以上</li>
+                            <li>• QA対応、LINE対応：多数</li>
+                            <li>• 記帳関連その他業務：多数</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-green-50 border-l-4 border-green-400 rounded-lg">
+                        <p class="dark-color">一件一件は軽微ですが、合計すると<strong class="text-green-600">月間約40時間分</strong>の工数となり、無視できないボリュームです。これらは効率化による削減効果が最も出やすい領域と言えます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 12: 標準時間と実績時間の乖離 -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">【課題②】標準時間と実績時間の乖離（ワーストケース）</h2>
+        <div class="mb-8">
+            <h3 class="text-2xl font-bold dark-color mb-6">乖離が著しいタスクの例</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="main-bg text-white">
+                            <th class="border border-gray-300 p-4 text-left">プロセス分類</th>
+                            <th class="border border-gray-300 p-4 text-center">標準時間(分)</th>
+                            <th class="border border-gray-300 p-4 text-center">作業時間(分)</th>
+                            <th class="border border-gray-300 p-4 text-center">乖離倍率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-red-50">
+                            <td class="border border-gray-300 p-4 dark-color">400.レビュー</td>
+                            <td class="border border-gray-300 p-4 text-center text-red-600 font-bold">3,900</td>
+                            <td class="border border-gray-300 p-4 text-center dark-color">180</td>
+                            <td class="border border-gray-300 p-4 text-center text-red-600 font-bold text-xl">21.7倍</td>
+                        </tr>
+                        <tr class="bg-orange-50">
+                            <td class="border border-gray-300 p-4 dark-color">301.売上関連</td>
+                            <td class="border border-gray-300 p-4 text-center text-orange-600 font-bold">9,463</td>
+                            <td class="border border-gray-300 p-4 text-center dark-color">437</td>
+                            <td class="border border-gray-300 p-4 text-center text-orange-600 font-bold text-xl">21.6倍</td>
+                        </tr>
+                        <tr class="bg-yellow-50">
+                            <td class="border border-gray-300 p-4 dark-color">100.資料回収</td>
+                            <td class="border border-gray-300 p-4 text-center text-yellow-600 font-bold">16,558</td>
+                            <td class="border border-gray-300 p-4 text-center dark-color">685</td>
+                            <td class="border border-gray-300 p-4 text-center text-yellow-600 font-bold text-xl">24.2倍</td>
+                        </tr>
+                        <tr class="bg-pink-50">
+                            <td class="border border-gray-300 p-4 dark-color">303.経費関連(スプシ)</td>
+                            <td class="border border-gray-300 p-4 text-center text-pink-600 font-bold">10,862</td>
+                            <td class="border border-gray-300 p-4 text-center dark-color">463</td>
+                            <td class="border border-gray-300 p-4 text-center text-pink-600 font-bold text-xl">23.5倍</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="bg-red-50 border-l-4 border-red-400 p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-red-800 mb-3">🚨 深刻な問題</h3>
+                <p class="dark-color">現行の標準時間は、実態を全く反映しておらず、生産性測定の指標として機能していません。</p>
+            </div>
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">⚠️ 影響</h3>
+                <p class="dark-color">この状態では、個人のパフォーマンスを正しく評価したり、将来の工数を正確に見積もることが不可能です。</p>
+            </div>
+        </div>
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-lg mt-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-3">💡 解決策</h3>
+            <p class="dark-color">標準時間マスタの早急かつ全面的な見直しが必要です。</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 13: オンボーディング業務の工数分析 -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">【機会①】オンボーディング業務の工数分析</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="chart-container">
+                <canvas id="onboardingChart"></canvas>
+            </div>
+            <div class="space-y-4">
+                <div class="main-bg text-white p-6 rounded-lg text-center">
+                    <h3 class="text-2xl font-bold mb-2">総作業時間</h3>
+                    <p class="text-3xl font-bold">5,160分以上</p>
+                    <p class="text-lg opacity-80">（確認できたタスクの合計）</p>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                        <span class="dark-color">面談（準備含む）</span>
+                        <div class="text-right">
+                            <span class="text-blue-600 font-bold">2,105分</span>
+                            <span class="text-sm text-gray-500 block">40.8%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-green-50 rounded border-l-4 border-green-500">
+                        <span class="dark-color">預金取引の登録</span>
+                        <div class="text-right">
+                            <span class="text-green-600 font-bold">2,070分</span>
+                            <span class="text-sm text-gray-500 block">40.1%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-orange-50 rounded border-l-4 border-orange-500">
+                        <span class="dark-color">顧客質問対応（LINE）</span>
+                        <div class="text-right">
+                            <span class="text-orange-600 font-bold">879分</span>
+                            <span class="text-sm text-gray-500 block">17.0%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded border-l-4 border-gray-500">
+                        <span class="dark-color">その他（記帳準備等）</span>
+                        <div class="text-right">
+                            <span class="text-gray-600 font-bold">106分</span>
+                            <span class="text-sm text-gray-500 block">2.1%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 bg-green-50 border-l-4 border-green-400 p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-green-800 mb-3">💡 考察</h3>
+            <p class="dark-color mb-3">新規顧客の立ち上げには、面談と初期データ登録という2つの大きな工数がかかっていることが明確です。</p>
+            <p class="dark-color">特にコミュニケーションコスト（面談、LINE対応）が全体の<strong class="text-green-600">57.8%</strong>を占めており、この部分の効率化が鍵となります。</p>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 14: レビュー業務の工数分析 -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">【機会②】レビュー業務の工数分析</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="chart-container">
+                <canvas id="reviewChart"></canvas>
+            </div>
+            <div class="space-y-4">
+                <div class="main-bg text-white p-6 rounded-lg text-center">
+                    <h3 class="text-2xl font-bold mb-2">総作業時間</h3>
+                    <p class="text-3xl font-bold">6,181分</p>
+                    <p class="text-lg opacity-80">（全体の約26.8%）</p>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                        <span class="dark-color">セルフレビュー</span>
+                        <div class="text-right">
+                            <span class="text-blue-600 font-bold">2,055分</span>
+                            <span class="text-sm text-gray-500 block">33.2%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-red-50 rounded border-l-4 border-red-500">
+                        <span class="dark-color">定常2次レビュー</span>
+                        <div class="text-right">
+                            <span class="text-red-600 font-bold">4,377分</span>
+                            <span class="text-sm text-gray-500 block">※重複あり</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded border-l-4 border-gray-500">
+                        <span class="dark-color">その他（HCレビュー等）</span>
+                        <div class="text-right">
+                            <span class="text-gray-600 font-bold">多数</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 space-y-4">
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-blue-800 mb-3">📊 重要性</h3>
+                <p class="dark-color">レビュー業務は、総作業時間の<strong class="text-blue-600">約26.8%</strong>を占める重要なプロセスです。</p>
+            </div>
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">🔍 課題</h3>
+                <p class="dark-color">特に「定常2次レビュー」に多くの時間がかかっています。レビューの観点や手順を標準化・共有することで、手戻りを減らし、全体の時間を短縮できる可能性があります。</p>
+            </div>
+            <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-green-800 mb-3">💡 改善機会</h3>
+                <p class="dark-color">セルフレビューの精度を高めることが、後工程の負荷削減に繋がります。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 15: 結論①分析からのインサイト -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">結論：分析からのインサイト ①</h2>
+        <div class="space-y-8">
+            <div class="grid grid-cols-2 gap-8">
+                <div class="main-bg text-white p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">🎯 業務の核心は「記帳」と「レビュー」</h3>
+                    <p class="leading-relaxed">記帳関連業務（300番台）が17,354分（75.2%）、レビュー関連業務が<strong>6,181分（26.8%）</strong>を占め、この2つが業務の大部分を構成している。これらのプロセスの効率化が最優先課題。</p>
+                </div>
+                <div class="bg-red-50 border-2 border-red-300 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-red-800 mb-4">⚠️ 特定担当者への極端な負荷集中</h3>
+                    <p class="dark-color leading-relaxed">「39久保」担当が<strong class="text-red-600">6,467分（全体の28%）</strong>を担っており、業務継続性のリスクとなっている。負荷分散とナレッジの平準化が不可欠。</p>
+                </div>
+            </div>
+            <div class="light-bg p-8 rounded-lg">
+                <h3 class="text-2xl font-bold main-color mb-4">📊 "チリツモ"タスクが生産性を圧迫</h3>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded border-l-4 border-yellow-500 text-center">
+                        <p class="text-3xl font-bold text-yellow-600">547件</p>
+                        <p class="dark-color">5分以下タスク</p>
+                        <p class="text-sm text-gray-500">全体の39.6%</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-orange-500 text-center">
+                        <p class="text-3xl font-bold text-orange-600">2,364分</p>
+                        <p class="dark-color">合計時間</p>
+                        <p class="text-sm text-gray-500">約40時間</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-green-500 text-center">
+                        <p class="text-3xl font-bold text-green-600">高い</p>
+                        <p class="dark-color">改善効果</p>
+                        <p class="text-sm text-gray-500">標準化・自動化で</p>
+                    </div>
+                </div>
+                <p class="dark-color mt-4 text-center">これらは業務フローの標準化や自動化による改善効果が大きい。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 16: 結論②分析からのインサイト -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">結論：分析からのインサイト ②</h2>
+        <div class="space-y-8">
+            <div class="grid grid-cols-2 gap-8">
+                <div class="bg-red-50 border-2 border-red-300 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-red-800 mb-4">🚨 形骸化した「標準時間」による管理機能不全</h3>
+                    <p class="dark-color leading-relaxed">実績と<strong class="text-red-600">最大24倍以上乖離</strong>した標準時間は、工数見積もりや生産性評価の基準として全く機能していない。データに基づいた再設定が急務。</p>
+                </div>
+                <div class="sub-bg text-white p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">💬 コミュニケーションコストの高さ</h3>
+                    <p class="leading-relaxed">「資料回収」や「オンボーディングの質問対応」など、顧客とのコミュニケーションに多くの時間が割かれている。FAQの整備や依頼方法の標準化で削減ポテンシャルあり。</p>
+                </div>
+            </div>
+            <div class="light-bg p-8 rounded-lg">
+                <h3 class="text-2xl font-bold main-color mb-6">👥 担当者ごとの役割分担の明確化</h3>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-blue-500">
+                        <h4 class="text-xl font-bold text-blue-600 mb-3">A26石田 担当</h4>
+                        <p class="dark-color">多頻度の定型タスク</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            <p>• 202件のタスク処理</p>
+                            <p>• 平均14.5分/件</p>
+                            <p>• 短時間タスクの効率処理</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-orange-500">
+                        <h4 class="text-xl font-bold text-orange-600 mb-3">39久保 担当</h4>
+                        <p class="dark-color">専門性の高いレビューや複雑なタスク</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            <p>• 162件のタスク処理</p>
+                            <p>• 平均39.9分/件</p>
+                            <p>• 高度な専門知識が必要</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="dark-color mt-6 text-center bg-white p-4 rounded">この特性を活かした業務フロー設計と人材育成が重要。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 17: 改善提案①短期的なアクションプラン -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">改善提案①：短期的なアクションプラン</h2>
+        <div class="space-y-8">
+            <div class="grid grid-cols-2 gap-8">
+                <div class="bg-yellow-50 border-2 border-yellow-300 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-yellow-500 text-white font-bold text-xl px-4 py-2 rounded-full mr-4">1</span>
+                        <h3 class="text-2xl font-bold text-yellow-800">"チリツモ"タスクの撲滅キャンペーン</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded">
+                            <h4 class="font-bold dark-color mb-2">内容:</h4>
+                            <p class="dark-color text-sm">「A26石田」担当が担う5分以下の「資料回収」タスクを対象に、午前・午後の2回にまとめて処理する「バッチ処理」を試行。</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded">
+                            <h4 class="font-bold text-green-800 mb-2">目標:</h4>
+                            <p class="dark-color text-sm">タスク切り替え時間を削減し、関連タスクの総時間を10%削減（月間 約240分 / 4時間の工数削減）。</p>
+                        </div>
+                        <div class="bg-blue-100 p-4 rounded">
+                            <h4 class="font-bold text-blue-800 mb-2">担当:</h4>
+                            <p class="dark-color text-sm">マネージャー、A26石田</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-blue-50 border-2 border-blue-300 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-blue-500 text-white font-bold text-xl px-4 py-2 rounded-full mr-4">2</span>
+                        <h3 class="text-2xl font-bold text-blue-800">オンボーディングのコミュニケーション効率化</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded">
+                            <h4 class="font-bold dark-color mb-2">内容:</h4>
+                            <p class="dark-color text-sm">新規顧客向けのFAQページを作成し、LINEでの初期案内にURLを添付。必要な資料リストを画像付きのチェックリスト形式に改善する。</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded">
+                            <h4 class="font-bold text-green-800 mb-2">目標:</h4>
+                            <p class="dark-color text-sm">オンボーディング時の質問対応時間を20%削減（月間 約175分 / 3時間の工数削減）。</p>
+                        </div>
+                        <div class="bg-orange-100 p-4 rounded">
+                            <h4 class="font-bold text-orange-800 mb-2">担当:</h4>
+                            <p class="dark-color text-sm">オンボチーム、大島</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-bg text-white p-6 rounded-lg text-center">
+                <h3 class="text-2xl font-bold mb-4">🎯 短期目標合計効果</h3>
+                <div class="grid grid-cols-3 gap-6">
+                    <div>
+                        <p class="text-3xl font-bold">415分</p>
+                        <p>月間削減工数</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold">約7時間</p>
+                        <p>時間換算</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold">1.8%</p>
+                        <p>全体工数削減率</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 18: 改善提案②中期的なアクションプラン -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">改善提案②：中期的なアクションプラン</h2>
+        <div class="space-y-8">
+            <div class="grid grid-cols-2 gap-8">
+                <div class="bg-purple-50 border-2 border-purple-300 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-purple-500 text-white font-bold text-xl px-4 py-2 rounded-full mr-4">3</span>
+                        <h3 class="text-2xl font-bold text-purple-800">標準時間マスタ再構築プロジェクト</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded">
+                            <h4 class="font-bold dark-color mb-2">内容:</h4>
+                            <p class="dark-color text-sm">全てのプロセス分類・タスク詳細について、過去3ヶ月の実績作業時間の中央値を基に、新しい標準時間を設定する。</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded">
+                            <h4 class="font-bold text-green-800 mb-2">目標:</h4>
+                            <p class="dark-color text-sm">乖離倍率を平均2倍以内に収め、信頼性のある工数管理基盤を構築する。</p>
+                        </div>
+                        <div class="bg-blue-100 p-4 rounded">
+                            <h4 class="font-bold text-blue-800 mb-2">担当:</h4>
+                            <p class="dark-color text-sm">プロジェクトマネージャー（指名）、各チームリーダー</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-green-50 border-2 border-green-300 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-green-500 text-white font-bold text-xl px-4 py-2 rounded-full mr-4">4</span>
+                        <h3 class="text-2xl font-bold text-green-800">ナレッジシェアリングと負荷分散</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded">
+                            <h4 class="font-bold dark-color mb-2">内容:</h4>
+                            <p class="dark-color text-sm">「39久保」担当が持つレビュー観点や複雑な記帳ノウハウをドキュメント化し、週1回のチーム内勉強会（30分）を実施。簡単なレビュー業務を他メンバーに段階的に移譲する。</p>
+                        </div>
+                        <div class="bg-orange-100 p-4 rounded">
+                            <h4 class="font-bold text-orange-800 mb-2">目標:</h4>
+                            <p class="dark-color text-sm">「39久保」担当の作業時間を15%削減（月間 約970分 / 16時間の工数創出）し、チーム全体のスキルアップを図る。</p>
+                        </div>
+                        <div class="bg-red-100 p-4 rounded">
+                            <h4 class="font-bold text-red-800 mb-2">担当:</h4>
+                            <p class="dark-color text-sm">39久保、マネージャー</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-bg text-white p-6 rounded-lg text-center">
+                <h3 class="text-2xl font-bold mb-4">🚀 中期目標合計効果</h3>
+                <div class="grid grid-cols-3 gap-6">
+                    <div>
+                        <p class="text-3xl font-bold">970分</p>
+                        <p>月間削減工数</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold">約16時間</p>
+                        <p>時間換算</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold">4.2%</p>
+                        <p>全体工数削減率</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 19: ネクストステップ -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">ネクストステップ</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="main-bg text-white">
+                        <th class="border border-gray-300 p-4 text-center w-16">Step</th>
+                        <th class="border border-gray-300 p-4 text-left">アクション</th>
+                        <th class="border border-gray-300 p-4 text-center w-32">期限</th>
+                        <th class="border border-gray-300 p-4 text-center w-48">担当者</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-red-50">
+                        <td class="border border-gray-300 p-4 text-center">
+                            <span class="bg-red-500 text-white font-bold px-3 py-1 rounded-full">1</span>
+                        </td>
+                        <td class="border border-gray-300 p-4 dark-color">本レポートに関する関係者ミーティングの実施、アクションプランの合意形成</td>
+                        <td class="border border-gray-300 p-4 text-center font-bold text-red-600">来週金曜日まで</td>
+                        <td class="border border-gray-300 p-4 text-center dark-color">マネージャー、各リーダー</td>
+                    </tr>
+                    <tr class="bg-orange-50">
+                        <td class="border border-gray-300 p-4 text-center">
+                            <span class="bg-orange-500 text-white font-bold px-3 py-1 rounded-full">2</span>
+                        </td>
+                        <td class="border border-gray-300 p-4 dark-color">短期アクション（提案1, 2）の実行開始と効果測定方法の決定</td>
+                        <td class="border border-gray-300 p-4 text-center font-bold text-orange-600">今月末まで</td>
+                        <td class="border border-gray-300 p-4 text-center dark-color">A26石田、オンボチーム</td>
+                    </tr>
+                    <tr class="bg-yellow-50">
+                        <td class="border border-gray-300 p-4 text-center">
+                            <span class="bg-yellow-500 text-white font-bold px-3 py-1 rounded-full">3</span>
+                        </td>
+                        <td class="border border-gray-300 p-4 dark-color">中期アクション（提案3, 4）のプロジェクト計画策定、担当者アサイン</td>
+                        <td class="border border-gray-300 p-4 text-center font-bold text-yellow-600">来月15日まで</td>
+                        <td class="border border-gray-300 p-4 text-center dark-color">マネージャー</td>
+                    </tr>
+                    <tr class="bg-green-50">
+                        <td class="border border-gray-300 p-4 text-center">
+                            <span class="bg-green-500 text-white font-bold px-3 py-1 rounded-full">4</span>
+                        </td>
+                        <td class="border border-gray-300 p-4 dark-color">短期アクションの効果測定と、月次での進捗確認MTGの設定</td>
+                        <td class="border border-gray-300 p-4 text-center font-bold text-green-600">来月末</td>
+                        <td class="border border-gray-300 p-4 text-center dark-color">全員</td>
+                    </tr>
+                    <tr class="bg-blue-50">
+                        <td class="border border-gray-300 p-4 text-center">
+                            <span class="bg-blue-500 text-white font-bold px-3 py-1 rounded-full">5</span>
+                        </td>
+                        <td class="border border-gray-300 p-4 dark-color">中期アクションのプロジェクトキックオフ</td>
+                        <td class="border border-gray-300 p-4 text-center font-bold text-blue-600">再来月1日まで</td>
+                        <td class="border border-gray-300 p-4 text-center dark-color">プロジェクト担当者</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-8 grid grid-cols-3 gap-6">
+            <div class="bg-red-100 border-l-4 border-red-500 p-4 rounded">
+                <h3 class="text-lg font-bold text-red-800 mb-2">🚨 緊急</h3>
+                <p class="text-sm dark-color">Step1-2は即座に実行が必要</p>
+            </div>
+            <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded">
+                <h3 class="text-lg font-bold text-yellow-800 mb-2">⚠️ 重要</h3>
+                <p class="text-sm dark-color">Step3-4で中長期戦略を確立</p>
+            </div>
+            <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded">
+                <h3 class="text-lg font-bold text-green-800 mb-2">🎯 継続</h3>
+                <p class="text-sm dark-color">Step5以降で持続的改善を実現</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド 20: 参考：モニタリングすべきKPI案 -->
+<div class="slide bg-white p-12">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold main-color mb-8 border-b-4 border-gray-200 pb-4">参考：モニタリングすべきKPI案</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold dark-color mb-6 light-bg p-4 rounded-lg">📈 業務効率</h3>
+                <div class="space-y-4">
+                    <div class="bg-white border-2 border-blue-200 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-blue-800 mb-3">1タスクあたり平均作業時間</h4>
+                        <div class="flex items-center justify-between">
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">現状</p>
+                                <p class="text-2xl font-bold text-red-600">16.7分</p>
+                            </div>
+                            <div class="text-4xl text-gray-300">→</div>
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">目標</p>
+                                <p class="text-2xl font-bold text-green-600">15.0分</p>
+                            </div>
+                        </div>
+                        <p class="text-center text-sm text-blue-600 font-bold mt-2">(10%改善)</p>
+                    </div>
+                    <div class="bg-white border-2 border-yellow-200 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-yellow-800 mb-3">5分以下タスクの割合（件数ベース）</h4>
+                        <div class="flex items-center justify-between">
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">現状</p>
+                                <p class="text-2xl font-bold text-red-600">39.6%</p>
+                            </div>
+                            <div class="text-4xl text-gray-300">→</div>
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">目標</p>
+                                <p class="text-2xl font-bold text-green-600">30.0%以下</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold dark-color mb-6 sub-bg p-4 rounded-lg text-white">👥 リソース配分</h3>
+                <div class="space-y-4">
+                    <div class="bg-white border-2 border-red-200 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-red-800 mb-3">特定担当者への作業時間集中度</h4>
+                        <p class="text-sm text-gray-600 mb-2">（1位の担当者の全体シェア）</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">現状</p>
+                                <p class="text-2xl font-bold text-red-600">28.0%</p>
+                                <p class="text-xs text-gray-500">(39久保)</p>
+                            </div>
+                            <div class="text-4xl text-gray-300">→</div>
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">目標</p>
+                                <p class="text-2xl font-bold text-green-600">20.0%以下</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold dark-color mb-6 mt-8 bg-gray-100 p-4 rounded-lg">🎯 品質・顧客満足度</h3>
+                <div class="bg-white border-2 border-green-200 p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-green-800 mb-3">レビュー業務の総作業時間</h4>
+                    <div class="flex items-center justify-between">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">現状</p>
+                            <p class="text-2xl font-bold text-red-600">6,181分</p>
+                        </div>
+                        <div class="text-4xl text-gray-300">→</div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">目標</p>
+                            <p class="text-2xl font-bold text-green-600">5,500分</p>
+                        </div>
+                    </div>
+                    <p class="text-center text-sm text-green-600 font-bold mt-2">(10%削減)</p>
+                    <p class="text-xs text-gray-500 text-center mt-2">※品質を維持しつつ、手戻り削減で効率化を目指す</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 main-bg text-white p-6 rounded-lg text-center">
+            <h3 class="text-2xl font-bold mb-4">🎉 改善完了時の予想効果</h3>
+            <div class="grid grid-cols-4 gap-4">
+                <div>
+                    <p class="text-3xl font-bold">1,385分</p>
+                    <p>月間削減工数</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold">約23時間</p>
+                    <p>時間換算</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold">6.0%</p>
+                    <p>全体工数削減率</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold">継続的</p>
+                    <p>改善サイクル</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Chart.js設定
+Chart.defaults.font.family = 'Noto Sans JP';
+
+// プロセス分類別作業時間シェア
+const processTimeCtx = document.getElementById('processTimeChart').getContext('2d');
+new Chart(processTimeCtx, {
+    type: 'pie',
+    data: {
+        labels: ['記帳関連業務(300番台)', '資料回収(100番台)', 'その他業務(900番台)', 'レビュー(400番台)', 'その他'],
+        datasets: [{
+            data: [17354, 2741, 1723, 1255, 0],
+            backgroundColor: ['#00a4c5', '#80d2e2', '#ccedf3', '#E2E2E3', '#231815']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+// プロセス分類別タスク件数シェア
+const processTaskCtx = document.getElementById('processTaskChart').getContext('2d');
+new Chart(processTaskCtx, {
+    type: 'pie',
+    data: {
+        labels: ['記帳関連業務', '資料回収', 'HC・本社MTG', 'レビュー', 'その他'],
+        datasets: [{
+            data: [732, 202, 100, 85, 264],
+            backgroundColor: ['#00a4c5', '#80d2e2', '#ccedf3', '#E2E2E3', '#231815']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+// 担当者別作業時間ランキング
+const userTimeCtx = document.getElementById('userTimeChart').getContext('2d');
+new Chart(userTimeCtx, {
+    type: 'bar',
+    data: {
+        labels: ['39久保', 'A26石田', '大島', 'A24松井', 'その他'],
+        datasets: [{
+            data: [6467, 2925, 2134, 1830, 9717],
+            backgroundColor: ['#00a4c5', '#80d2e2', '#ccedf3', '#E2E2E3', '#231815']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: '作業時間（分）'
+                }
+            }
+        }
+    }
+});
+
+// 担当者別タスク件数ランキング
+const userTaskCtx = document.getElementById('userTaskChart').getContext('2d');
+new Chart(userTaskCtx, {
+    type: 'bar',
+    data: {
+        labels: ['A26石田', '39久保', '大島', 'A24松井', 'その他'],
+        datasets: [{
+            data: [202, 162, 119, 95, 805],
+            backgroundColor: ['#00a4c5', '#80d2e2', '#ccedf3', '#E2E2E3', '#231815']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'タスク件数'
+                }
+            }
+        }
+    }
+});
+
+// 時間消費タスクランキング
+const taskTimeCtx = document.getElementById('taskTimeChart').getContext('2d');
+new Chart(taskTimeCtx, {
+    type: 'horizontalBar',
+    data: {
+        labels: [
+            'その他全般業務（日報等）',
+            'セルフレビュー',
+            '定常2次レビュー',
+            '預金・クレカ取引関連',
+            'HCレビュー',
+            '記帳関連その他',
+            'オンボーディング面談',
+            '資料回収',
+            '売上関連',
+            '経費関連'
+        ],
+        datasets: [{
+            data: [1723, 2055, 1377, 1200, 847, 800, 750, 685, 650, 600],
+            backgroundColor: '#00a4c5'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            x: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: '作業時間（分）'
+                }
+            }
+        }
+    }
+});
+
+// 顧客グループ別作業時間
+const customerGroupCtx = document.getElementById('customerGroupChart').getContext('2d');
+new Chart(customerGroupCtx, {
+    type: 'bar',
+    data: {
+        labels: ['39久保', 'A24松井', 'A26石田', '大島', 'その他'],
+        datasets: [{
+            data: [7823, 3524, 3215, 2890, 5621],
+            backgroundColor: ['#00a4c5', '#80d2e2', '#ccedf3', '#E2E2E3', '#231815']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: '作業時間（分）'
+                }
+            }
+        }
+    }
+});
+
+// オンボーディング工数分析
+const onboardingCtx = document.getElementById('onboardingChart').getContext('2d');
+new Chart(onboardingCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['面談（準備含む）', '預金取引の登録', '顧客質問対応（LINE）', 'その他（記帳準備等）'],
+        datasets: [{
+            data: [2105, 2070, 879, 106],
+            backgroundColor: ['#00a4c5', '#80d2e2', '#ccedf3', '#E2E2E3']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+// レビュー業務工数分析
+const reviewCtx = document.getElementById('reviewChart').getContext('2d');
+new Chart(reviewCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['セルフレビュー', '定常2次レビュー', 'HCレビュー', 'その他レビュー'],
+        datasets: [{
+            data: [2055, 2700, 847, 579],
+            backgroundColor: ['#00a4c5', '#80d2e2', '#ccedf3', '#E2E2E3']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>
