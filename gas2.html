@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全社GAS活用推進ガイドライン（最完全版）</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+            background-color: #f0f0f0;
+            color: #231815;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .slide {
+            width: 1024px;
+            background-color: #FFFFFF;
+            border: 1px solid #E2E2E3;
+            padding: 30px;
+            margin: 20px auto;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .slide-header {
+            background-color: #00a4c5;
+            color: #FFFFFF;
+            padding: 15px 20px;
+            font-size: 28px;
+            font-weight: bold;
+            flex-shrink: 0;
+            border-radius: 8px 8px 0 0;
+            margin: -30px -30px 20px -30px;
+        }
+        .slide-content {
+            padding: 25px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        .two-column { display: flex; flex-grow: 1; gap: 25px; }
+        .column { flex: 1; }
+        .illustration {
+            width: 100%; 
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .illustration img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        pre {
+            background-color: #231815; 
+            color: #ccedf3; 
+            border: 1px solid #E2E2E3; 
+            padding: 15px;
+            border-radius: 5px; 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 14px; 
+            white-space: pre-wrap; 
+            word-wrap: break-word;
+            overflow-x: auto;
+        }
+        h2, h3, h4 { color: #00a4c5; font-weight: bold; }
+        ul { list-style: none; padding-left: 0; }
+        li { padding-bottom: 12px; }
+        li strong { color: #00a4c5; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 16px; }
+        th, td { padding: 12px; border: 1px solid #E2E2E3; text-align: left; vertical-align: top; }
+        th { background-color: #00a4c5; color: #FFFFFF; border-color: #FFFFFF; }
+        tbody tr:nth-child(even) { background-color: #ccedf3; }
+        .step-title { font-size: 22px; font-weight: bold; color: #00a4c5; margin-bottom: 15px; }
+        .code-comment { color: #80d2e2; }
+        .tips, .warning {
+            padding: 15px; margin-top: 20px; border-radius: 8px; border-left-width: 5px; border-left-style: solid;
+        }
+        .tips { background-color: #ccedf3; border-color: #00a4c5; }
+        .warning { background-color: #fce8e6; border-color: #ea636b; }
+        .tips::before { content: '💡 Tips'; font-weight: bold; color: #00a4c5; margin-right: 10px; }
+        .warning::before { content: '⚠️ 注意'; font-weight: bold; color: #ea636b; margin-right: 10px; }
+        .center-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Introduction -->
+    <div class="slide">
+        <div class="slide-header">はじめに：本ガイドラインの目的と背景</div>
+        <div class="slide-content">
+            <h2>1. 当社の現状と目指す方向性</h2>
+            <ul>
+                <li><strong>現状認識：</strong> AI活用を全社方針とする一方、各部署には依然として非効率な手作業や定型業務が散在。</li>
+                <li><strong>課題：</strong> 属人的な作業によるミス、時間的コストの増大。</li>
+                <li><strong>目指す姿：</strong> 全社員が自律的に業務改善を推進する文化を醸成し、高付加価値業務へシフトする。</li>
+            </ul>
+            <h2>2. GAS（Google Apps Script）の位置づけ</h2>
+            <ul>
+                <li>Google Workspaceの機能を拡張し、自動化・連携を実現するプログラミング環境。</li>
+                <li>特別な開発環境は不要で、Googleアカウントがあれば誰でも利用可能。</li>
+            </ul>
+            <h2>3. GAS活用の戦略的意義</h2>
+            <ul>
+                <li><strong>親和性：</strong> 日常業務で利用するツールを直接操作可能。</li>
+                <li><strong>費用対効果：</strong> 追加コストなく導入でき、迅速な効果が期待できる。</li>
+                <li><strong>AI活用基盤の構築：</strong> データ収集・整形スキルの習得は、高度なAI活用のための必須要件。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 2: Skill Level Overview -->
+    <div class="slide">
+        <div class="slide-header">GASスキルレベル定義と全体像</div>
+        <div class="slide-content">
+            <p style="font-size:18px;">本ガイドラインでは、習熟度に応じて5段階のスキルレベルを定義し、体系的なスキルアップを支援します。個人の成長が組織の成長に繋がるモデルです。</p>
+            <div style="border-left: 4px solid #00a4c5; padding-left: 20px; margin-top:30px;">
+                <h3 style="color:#231815; font-size:24px;">全社GAS活用推進</h3>
+                <ul style="padding-left:20px; font-size:18px;">
+                    <li style="margin-bottom:15px;"><b>Lv.1 ファーストタッチ：</b>GASを一度は試したことがある<br><span style="font-size:0.9em; color:#555;">└ 目的：GASの概念理解と成功体験の獲得</span></li>
+                    <li style="margin-bottom:15px;"><b>Lv.2 パーソナル活用：</b>日常的にGASを活用し、自身の業務を効率化<br><span style="font-size:0.9em; color:#555;">└ 目的：個人の反復作業を自動化し、生産性向上を実感</span></li>
+                    <li style="margin-bottom:15px;"><b>Lv.3 チーム貢献：</b>GASを使い分け、チームの成果に貢献<br><span style="font-size:0.9em; color:#555;">└ 目的：複数サービス連携を駆使し、チーム・部署のワークフローを改善</span></li>
+                    <li style="margin-bottom:15px;"><b>Lv.4 プロセス変革：</b>内外のツールを組合せ、新たな価値を創造<br><span style="font-size:0.9em; color:#555;">└ 目的：独自のツール開発により、再現性ある効率化や自動化を実現</span></li>
+                    <li style="margin-bottom:15px;"><b>Lv.5 全社DX推進：</b>GASを軸に、組織全体の生産性向上を牽引<br><span style="font-size:0.9em; color:#555;">└ 目的：GAS活用の標準化、後進育成、戦略立案を通じて事業に変革をもたらす</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 1 Overview -->
+    <div class="slide">
+        <div class="slide-header">【個人レベル1】ファーストタッチ：概要</div>
+        <div class="slide-content">
+            <p style="font-size:20px;">このレベルでは、「とにかく一度動かしてみる」ことを通じて、GASへの心理的なハードルを取り払うことを目指します。</p>
+            <ul>
+                <li><strong>レベル定義：</strong>社内推奨のGASを一度は試したことがある。提供されたコードをコピー＆ペーストし、基本的な指示でGASを扱うことができる。</li>
+                <li><strong>本セクションのゴール：</strong><br>
+                    <ol style="font-size:18px; line-height:1.6; padding-left:20px;">
+                        <li>スプレッドシートからスクリプトエディタを開ける。</li>
+                        <li>提供されたコードを貼り付け、保存・実行できる。</li>
+                        <li>初回実行時の「権限承認」を自分一人で完了できる。</li>
+                        <li>スプレッドシート上で、コードによる変化を確認し、成功体験を得る。</li>
+                    </ol>
+                </li>
+            </ul>
+            <div class="illustration" style="height: 200px; margin-top: 20px;">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/f36d937c-13b4-46b5-8663-e9e3ad4b357f" alt="スタートラインに立つ人物のイラスト">
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 1 Step 1 -->
+    <div class="slide">
+        <div class="slide-header">【Lv1-STEP1】スクリプトエディタを開こう</div>
+        <div class="slide-content">
+            <div class="step-title">1. まずは、新しいスプレッドシートを開きます。</div>
+            <div class="two-column">
+                <div class="column">
+                    <div class="step-title">2. 上部メニューから [拡張機能] > [Apps Script] を選択します。</div>
+                    <p>これで、GASのコードを書くための専用画面（スクリプトエディタ）が新しいタブで開きます。</p>
+                    <p style="margin-top:30px; font-size:18px;"><b>ここが私たちの「作業場」になります！</b></p>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/2d991724-448d-421e-aa87-6d7dac3ceb8e" alt="スプレッドシートのメニュー画面">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 1 Step 2 -->
+    <div class="slide">
+        <div class="slide-header">【Lv1-STEP2】コードを貼り付けよう</div>
+        <div class="slide-content">
+            <div class="step-title">1. エディタに最初から書かれている文字はすべて消してしまいましょう。</div>
+            <div class="step-title">2. 次のコードをコピーして、空になったエディタに貼り付けます。</div>
+            <div class="two-column">
+                <div class="column" style="flex:1.5;">
+                    <pre><code>function sayHello() {
+  // 1. 操作するシートを取得します
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+  // 2. A1セルを指定して、「こんにちは、GAS！」という文字を入力します
+  sheet.getRange('A1').setValue('こんにちは、GAS！');
+}</code></pre>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/71af426c-22e2-4f43-9f2d-5e84884d5a96" alt="コードエディタ画面">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 1 Step 3 -->
+    <div class="slide">
+        <div class="slide-header">【Lv1-STEP3】保存して実行しよう</div>
+        <div class="slide-content">
+            <div class="step-title">1. まず、書いたコードを保存します。</div>
+            <p>エディタの上部にある 💾 (フロッピーディスク) のアイコンをクリックします。</p>
+
+            <div class="step-title" style="margin-top:30px;">2. 次に、コードを実行します。</div>
+            <p>保存アイコンの隣にある [実行] ボタンをクリックします。これで、GASに「この命令を動かして！」と指示したことになります。</p>
+
+            <div class="illustration" style="margin-top:20px;">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/e31c1777-e593-4a24-98d9-a5d71eb0b6dd" alt="保存と実行ボタン">
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 1 Step 4 -->
+    <div class="slide">
+        <div class="slide-header">【Lv1-STEP4】権限を承認しよう（初回のみ）</div>
+        <div class="slide-content">
+            <p style="font-size:20px; font-weight:bold;">初めて実行するとき、Googleから「このプログラムに権限を与えますか？」と聞かれます。これは一番の難所ですが、落ち着いて進めましょう。</p>
+            <div class="two-column">
+                <div class="column">
+                    <ol style="font-size:16px; line-height:1.8; padding-left:20px;">
+                        <li>「承認が必要です」という画面で [権限を確認] をクリック。</li>
+                        <li>自分のGoogleアカウントを選択します。</li>
+                        <li>「このアプリはGoogleで確認されていません」と表示されたら、[詳細] をクリックします。</li>
+                        <li>[無題のプロジェクト（安全ではないページ）に移動] をクリックします。</li>
+                        <li>最後に、[許可] をクリックします。</li>
+                    </ol>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/0de75488-3d67-453e-9321-16b9037607be" alt="権限承認プロセス">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 1 Step 5 -->
+    <div class="slide">
+        <div class="slide-header">【Lv1-STEP5】実行結果を確認しよう！</div>
+        <div class="slide-content center-content">
+            <h2 style="font-size:32px;">おめでとうございます！</h2>
+            <p style="font-size:24px;">スプレッドシートのタブに戻ってみましょう。</p>
+            <div class="illustration" style="margin-top:30px;">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/b6038479-990d-457b-9413-1206157dd868" alt="成功結果画面">
+            </div>
+            <p style="font-size:22px; margin-top:30px;">これが、GASによる自動化の第一歩です！</p>
+        </div>
+    </div>
+
+    <!-- Level 2 Overview -->
+    <div class="slide">
+        <div class="slide-header">【個人レベル2】パーソナル活用：概要</div>
+        <div class="slide-content">
+            <p style="font-size:20px;">このレベルでは、Lv1で学んだ基本操作を応用し、コードを少しだけ「修正」して、自分の業務に合わせた簡単な自動化を目指します。</p>
+            <ul>
+                <li><strong>レベル定義：</strong>日常的にGASを使っている。既存コードをそのままコピーして使うだけでなく、状況に応じて精査し、自身の業務に合わせて修正・活用できる。</li>
+                <li><strong>本セクションのゴール：</strong><br>
+                    <ol style="font-size:18px; line-height:1.6; padding-left:20px;">
+                        <li>`if`文（もし〜なら）を使った簡単な条件分岐を理解する。</li>
+                        <li>コードの一部を書き換えて、処理内容を変更できる。</li>
+                        <li>「トリガー」を設定し、手動実行ではなく自動でコードが動く仕組みを作れる。</li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Level 2 Step 1 -->
+    <div class="slide">
+        <div class="slide-header">【Lv2-STEP1】状況に応じたコードを書いてみよう</div>
+        <div class="slide-content">
+            <p class="step-title">テーマ：タスクリストのB列のステータスが「完了」になったら、その行を灰色にする</p>
+            <div class="two-column">
+                <div class="column">
+                    <p>このコードは「編集されたセルの情報」をチェックし、もし条件に合えば行の色を変えます。</p>
+                    <pre><code>function onEdit(e) {
+  // 編集されたセルの情報を取得
+  const range = e.range;
+  const sheet = range.getSheet();
+  
+  // B列が編集され、かつ値が「完了」の場合
+  if (range.getColumn() == 2 && range.getValue() == '完了') {
+    // 編集された行全体を取得して背景を灰色にする
+    const row = range.getRow();
+    sheet.getRange(row, 1, 1, sheet.getLastColumn()).setBackground('#dddddd');
+  }
+}</code></pre>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/491d32d2-12e3-42fc-aff8-dff9e357ddd0" alt="タスクリスト例">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 2 Step 2 -->
+    <div class="slide">
+        <div class="slide-header">【Lv2-STEP2】コードを自分で修正してみよう</div>
+        <div class="slide-content">
+            <p class="step-title">お題：「完了」なら灰色、もし「対応中」なら黄色にしてみましょう。</p>
+            <div class="two-column">
+                <div class="column" style="flex:1.5;">
+                    <p>`else if` を使って条件を追加します。色も変えてみましょう。</p>
+                    <pre><code>function onEdit(e) {
+  const range = e.range;
+  const sheet = range.getSheet();
+  const row = range.getRow();
+  
+  // B列が編集された場合のみ処理
+  if (range.getColumn() == 2) {
+    if (range.getValue() == '完了') {
+      sheet.getRange(row, 1, 1, sheet.getLastColumn()).setBackground('#dddddd');
+    } <strong style="color:red;">else if (range.getValue() == '対応中') {
+      sheet.getRange(row, 1, 1, sheet.getLastColumn()).setBackground('#fffacd'); // 黄色
+    }</strong>
+  }
+}</code></pre>
+                    <p style="margin-top:20px;">このように、条件や色を変えるだけで、自分のルールに合わせた自動化ができます。</p>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/13c84803-6fdf-43e1-815c-0b0e7006e400" alt="コード修正とカラーコード">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 2 Step 3 -->
+    <div class="slide">
+        <div class="slide-header">【Lv2-STEP3】トリガーを設定しよう</div>
+        <div class="slide-content">
+            <p class="step-title">`onEdit`は特別で、編集時に自動で動きます。ここでは別の例として「毎日朝9時に期限切れをチェックする」という時間主導のトリガーを設定してみます。</p>
+            <div class="two-column">
+                <div class="column">
+                    <ol style="font-size:18px; line-height:2; padding-left:20px;">
+                        <li>スクリプトエディタの左メニューから、⏰ (時計) のアイコン [トリガー] をクリックします。</li>
+                        <li>右下に表示される [+ トリガーを追加] ボタンをクリックします。</li>
+                    </ol>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/9ed40da5-6909-401e-a658-8bb717506781" alt="トリガー設定画面">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 2 Step 4 -->
+    <div class="slide">
+        <div class="slide-header">【Lv2-STEP4】トリガーの詳細を設定しよう</div>
+        <div class="slide-content">
+            <p class="step-title">設定画面で「いつ」「何を」実行するかをGoogleに教えます。</p>
+            <div class="two-column">
+                <div class="column">
+                    <ul>
+                        <li><strong>実行する関数を選択:</strong> `checkDeadline` （※事前にこの関数を作成しておく）</li>
+                        <li><strong>イベントのソースを選択:</strong> `時間主導型`</li>
+                        <li><strong>時間ベースのトリガーのタイプを選択:</strong> `日付ベースのタイマー`</li>
+                        <li><strong>時刻を選択:</strong> `午前8時～9時`</li>
+                    </ul>
+                    <p style="margin-top:20px;">設定が完了したら [保存] をクリックします。</p>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/a48d3f0d-1120-43f1-933a-25443d5392d5" alt="トリガー設定詳細">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 2 Step 5 -->
+    <div class="slide">
+        <div class="slide-header">【Lv2-STEP5】自動実行を確認しよう！</div>
+        <div class="slide-content center-content">
+            <h2 style="font-size:32px;">これで設定は完了です！</h2>
+            <p style="font-size:24px;">指定した時間になると、あなたが寝ていても、PCを閉じていても、<br>Googleのサーバーが自動でスクリプトを実行してくれます。</p>
+            <div class="illustration" style="margin-top:30px;">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/2af5e410-edb6-49ee-a6ef-6c8ec61fdf91" alt="自動実行ワークフロー">
+            </div>
+            <p style="font-size:22px; margin-top:30px;">手作業のリマインドやチェックから解放されましょう！</p>
+        </div>
+    </div>
+
+    <!-- Level 3 Overview -->
+    <div class="slide">
+        <div class="slide-header">【個人レベル3】チーム貢献：概要</div>
+        <div class="slide-content">
+            <ul>
+                <li><strong>目的 (Why)：</strong><br><p style="font-size:18px; line-height:1.6; padding-left:20px;">個人の業務効率化に留まらず、チームや部署の共通課題を解決するワークフローを構築し、組織全体の生産性向上に貢献すること。</p></li>
+                <li><strong>目標 (What)：</strong><br><ol style="font-size:18px; line-height:1.6; padding-left:20px;"><li>現在の業務プロセスを分析・分解し、GASによる自動化ポイントを特定できる。</li><li>`DriveApp`, `CalendarApp`, `GmailApp`, `DocumentApp`の中から必要なサービスを選択し、連携させた処理を設計・実装できる。</li><li>チームメンバーが利用することを想定し、スプレッドシートのボタンなど簡易なUIを提供できる。</li><li>`try...catch`文を使い、予期せぬエラーが発生しても処理が止まらない、より堅牢なプログラムを作成できる。</li></ol></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Level 3 Step 1 -->
+    <div class="slide">
+        <div class="slide-header">【Lv3-STEP1】業務プロセスの設計</div>
+        <div class="slide-content">
+            <p class="step-title">良い自動化は良い設計から。コードを書く前に、現状と理想を整理します。</p>
+            <div class="two-column">
+                <div class="column">
+                    <h4>テーマ：定例会議の議事録作成・共有プロセス</h4>
+                    <p><strong>現状の課題 (As-Is):</strong></p>
+                    <ul style="font-size:16px; list-style-type:disc; padding-left:20px;">
+                        <li>毎回、テンプレートから手動でファイルをコピー。</li>
+                        <li>ファイル名や日付を手入力するため、命名規則がバラバラ。</li>
+                        <li>作成後に参加者全員に手動でメール共有。</li>
+                    </ul>
+                    <p><strong>自动化の設計図 (To-Be):</strong></p>
+                    <ol style="font-size:16px; list-style-type:decimal; padding-left:20px;">
+                        <li>ボタン一発で起動。</li>
+                        <li>テンプレートを複製し、規則通りにリネーム。</li>
+                        <li>本文の日付や会議名を自動で置換。</li>
+                        <li>指定されたメーリングリストに共有メールを自動送信。</li>
+                    </ol>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/f7086642-6572-434e-ab42-136fda0a9e11" alt="業務プロセス設計フローチャート">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 3 Step 2 -->
+    <div class="slide">
+        <div class="slide-header">【Lv3-STEP2】複数サービス連携の実装</div>
+        <div class="slide-content">
+            <p class="step-title">設計図に基づき、各サービスを連携させるコードを実装します。</p>
+            <pre><code>function createMinutes() {
+  // テンプレートファイルをコピー
+  const templateFile = DriveApp.getFileById('TEMPLATE_FILE_ID');
+  const newFile = templateFile.makeCopy('議事録_' + Utilities.formatDate(new Date(), 'JST', 'yyyy/MM/dd'));
+  
+  // ドキュメントの内容を編集
+  const doc = DocumentApp.openById(newFile.getId());
+  const body = doc.getBody();
+  body.replaceText('{{DATE}}', Utilities.formatDate(new Date(), 'JST', 'yyyy年MM月dd日'));
+  body.replaceText('{{MEETING_NAME}}', '定例会議');
+  doc.saveAndClose();
+  
+  // メール通知
+  const emails = ['member1@company.com', 'member2@company.com'];
+  GmailApp.sendEmail(
+    emails.join(','),
+    '議事録を作成しました',
+    '議事録のリンク: ' + newFile.getUrl()
+  );
+}</code></pre>
+            <div class="tips" style="font-size:16px;">
+                <strong>IDのハードコーディングを避けよう</strong><br>
+                コード内に直接IDを書く（ハードコーディング）と、テンプレートファイルが変わっただけでコード修正が必要になります。上級者は、これらのIDをスクリプトプロパティや設定用シートに外出しして管理します。
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 3 Step 3 -->
+    <div class="slide">
+        <div class="slide-header">【Lv3-STEP3】チームで使えるUIの提供</div>
+        <div class="slide-content">
+            <p class="step-title">誰でも使えるように、スプレッドシートに「実行ボタン」を設置します。</p>
+            <div class="two-column">
+                <div class="column">
+                    <ol style="font-size:18px; line-height:1.8; padding-left:20px;">
+                        <li>スプレッドシートのメニューから <strong>[挿入] > [図形描画]</strong> を選択。</li>
+                        <li>好きな形のボタンを作成し、[保存して終了]。</li>
+                        <li>配置されたボタン右上の「︙」から <strong>[スクリプトを割り当て]</strong> を選択。</li>
+                        <li>実行したい関数名（例: `createMinutes`）を入力し、[OK]をクリック。</li>
+                    </ol>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/b41eb2f5-fdfc-42b5-9ee3-6fe57ad7016b" alt="スプレッドシートボタン設定">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 3 Step 4 -->
+    <div class="slide">
+        <div class="slide-header">【Lv3-STEP4】エラーハンドリングの導入</div>
+        <div class="slide-content">
+            <p class="step-title">他人が使うツールは、予期せぬエラーに備える必要があります。</p>
+            <pre><code>function createMinutesSafely() {
+  try {
+    <span class="code-comment">// --- ここに、成功するのが当たり前の処理を書く ---</span>
+    createMinutes(); <span class="code-comment">// メインの処理を呼び出す</span>
+    SpreadsheetApp.getUi().alert('議事録の作成と通知が完了しました。');
+
+  } catch (e) {
+    <span class="code-comment">// --- もし try の中でエラーが起きたら、ここの処理が動く ---</span>
+    const errorMessage = `エラーが発生しました。\n\n詳細: ${e.message}\nファイル: ${e.fileName}\n行番号: ${e.lineNumber}`;
+    Logger.log(errorMessage); <span class="code-comment">// ログに詳細を記録</span>
+    SpreadsheetApp.getUi().alert(errorMessage); <span class="code-comment">// ユーザーにエラーを通知</span>
+  }
+}</code></pre>
+            <div class="tips" style="font-size:16px;">
+                `try...catch`構文は、プログラムの「保険」です。テンプレートファイルが削除されるなど、予期せぬ事態が起きてもプログラムが途中で止まらず、利用者に状況を伝えられます。
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 3 Summary -->
+    <div class="slide">
+        <div class="slide-header">【個人レベル3】まとめ</div>
+        <div class="slide-content center-content">
+            <h2 style="font-size:32px;">チームの課題を解決するツール開発者へ！</h2>
+            <div class="illustration" style="margin: 30px auto; width:80%;">
+                <img src="https://cdn1.genspark.ai/user-upload-image/ggt_image_generated/6a16164d-2314-49c6-a011-cf55ee764f29" alt="チームヒーロー">
+            </div>
+            <ul style="text-align:left; font-size:20px; margin: 0 auto; width:80%;">
+                <li>✔️ 業務プロセスを設計し、複数のサービスを連携できるようになった。</li>
+                <li>✔️ チームメンバーが簡単に使えるUIを提供できるようになった。</li>
+                <li>✔️ エラーハンドリングを導入し、より信頼性の高いツールを作れるようになった。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Level 4 Overview -->
+    <div class="slide">
+        <div class="slide-header">【個人レベル4】プロセス変革：概要</div>
+        <div class="slide-content">
+            <ul>
+                <li><strong>レベル定義：</strong>社内推奨ツール以外も用途に合わせて積極的に活用し、再現性ある効率化や自動化ができ、創造性向上ができている。単一の自動化アプリを設計・実装する。</li>
+                <li><strong>目的：</strong>既存の業務のやり方を変革し、部門全体の生産性向上にインパクトを与える。</li>
+                <li><strong>目標：</strong>HTML Serviceを用いて非エンジニアでも操作できるWebアプリを開発できる。外部サービスと連携したシステムを構築できる。</li>
+                <li><strong>GASでできること（例）：</strong>経費申請Webフォームを作成し、申請内容をSlackで上長に自動通知する仕組みを構築する。</li>
+                <li><strong>コード難易度：</strong><span style="color:#00a4c5; font-weight:bold; font-size:24px;">★★★★</span><span style="color:#E2E2E3;font-weight:bold; font-size:24px;">☆</span></li>
+                <li><strong>学習手段：</strong>外部技術セミナーへの参加（費用補助）、技術ブログやGitHubでの学習</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Level 4 Step 1 -->
+    <div class="slide">
+        <div class="slide-header">【Lv4-STEP1】Webアプリの構造理解</div>
+        <div class="slide-content">
+            <p class="step-title">GASのWebアプリは、2つの部分から成り立っています。</p>
+            <div class="two-column">
+                <div class="column">
+                    <h4>① フロントエンド (クライアントサイド)</h4>
+                    <p>ユーザーのブラウザで動作し、見た目や操作を担当します。<br><strong>技術：</strong> HTML, CSS, JavaScript</p>
+                    <h4>② サーバーサイド</h4>
+                    <p>Googleのサーバーで動作し、スプレッドシート操作やメール送信などの裏方処理を担当します。<br><strong>技術：</strong> GAS (`.gs`ファイル)</p>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/c97eb68f-4cd2-47f6-947d-52b59aa2e967" alt="Webアプリ構造図">
+                    </div>
+                </div>
+            </div>
+            <div class="tips" style="font-size:16px;">
+                `doGet()`という特別な名前の関数が、ユーザーがURLにアクセスしたときに最初に呼び出され、HTMLページを返します。これがWebアプリの入り口です。
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 4 Summary -->
+    <div class="slide">
+        <div class="slide-header">【個人レベル4】まとめ</div>
+        <div class="slide-content center-content">
+            <h2 style="font-size:32px;">「ないなら作る」業務システムクリエイターへ！</h2>
+            <div class="illustration" style="margin: 30px auto; width:80%;">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/9bb466de-e1df-4bc3-8906-a0bf2056c695" alt="アプリケーション構築者">
+            </div>
+            <ul style="text-align:left; font-size:20px; margin: 0 auto; width:80%;">
+                <li>✔️ HTML/GASを組み合わせ、独自のWebアプリケーションを開発できるようになった。</li>
+                <li>✔️ 外部APIと連携し、Google Workspaceの枠を超えた自動化が可能になった。</li>
+                <li>✔️ 業務プロセスそのものを改善・変革するソリューションを自ら創出できるようになった。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Level 5 Overview -->
+    <div class="slide">
+        <div class="slide-header">【個人レベル5】全社DX推進：概要</div>
+        <div class="slide-content">
+            <ul>
+                <li><strong>レベル定義：</strong>自身だけでなく他者の生産性向上ができる。GASを軸とした新たな戦略の立案ができる。組織全体の自動化開発を推進する。</li>
+                <li><strong>目的：</strong>GAS活用を全社に浸透させるための仕組み作りと文化醸成をリードする。</li>
+                <li><strong>目標：</strong>全社共通で利用できるGASライブラリを開発・保守する。セキュリティや保守性を考慮した社内標準やコーディング規約を策定・展開できる。</li>
+                <li><strong>GASでできること（例）：</strong>全社DXプロジェクトの技術責任者として大規模な業務改革を牽引する。後進を育成する。</li>
+                <li><strong>コード難易度：</strong><span style="color:#00a4c5; font-weight:bold; font-size:24px;">★★★★★</span></li>
+                <li><strong>学習手段：</strong>社外カンファレンスでの登壇・情報発信、OSSへの貢献</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Level 5 Example 1 -->
+    <div class="slide">
+        <div class="slide-header">【Lv5-具体例1】設計：共通ライブラリの開発</div>
+        <div class="slide-content">
+            <p class="step-title">「車輪の再発明」を防ぎ、組織全体の開発効率と品質を底上げします。</p>
+            <div class="two-column">
+                <div class="column" style="flex:1.5;">
+                    <h4>例：Slack通知ライブラリ</h4>
+                    <p>誰でも `Slack.post("メッセージ")` と書くだけで通知できるようにします。</p>
+                    <pre><code><span class="code-comment">// ライブラリのコード</span>
+const WEBHOOK_URL = PropertiesService.getScriptProperties().getProperty('SLACK_WEBHOOK');
+
+function post(message, channel) {
+  // ... エラーハンドリングやチャンネル指定などの共通処理をここに実装 ...
+}</code></pre>
+                    <h4>利用側のコード</h4>
+                    <pre><code>function someProcess() {
+  Logger.log('処理開始');
+  Slack.post('月次レポート処理が完了しました', '#reports');
+}</code></pre>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/8df6651a-d9f1-4a3b-8583-5f5439dbee1d" alt="共通ライブラリ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 5 Example 2 -->
+    <div class="slide">
+        <div class="slide-header">【Lv5-具体例2】統制：ガバナンスの設計</div>
+        <div class="slide-content">
+            <p class="step-title">自由な開発を促進しつつ、混乱を防ぐための「交通整理」を行います。</p>
+            <div class="two-column">
+                <div class="column">
+                    <h4>コーディング規約の策定</h4>
+                    <p>変数名はキャメルケースで、など誰が書いても同じようなスタイルになるルールを定めます。</p>
+                    <h4>コードレビュー文化の導入</h4>
+                    <p>重要なスクリプトは、公開前に必ず他のエキスパートがチェックする体制を構築します。</p>
+                    <h4>バージョン管理 (`clasp`)</h4>
+                    <p>ローカル環境で開発し、Gitで変更履歴を管理する高度な開発フローを導入・啓蒙します。</p>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/ab28af9a-856c-45f7-aa36-993b85f021fc" alt="ガバナンス変革">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 5 Example 3 -->
+    <div class="slide">
+        <div class="slide-header">【Lv5-具体例3】最適化：パフォーマンスとクォータ</div>
+        <div class="slide-content">
+            <p class="step-title">大規模データを扱う際、処理速度と実行制限（クォータ）が壁になります。</p>
+            <div class="two-column">
+                <div class="column">
+                    <h4>絶対原則：ループ内でのAPI呼び出しを避ける</h4>
+                    <p>× 悪い例：1000回 `getValue()`</p>
+                    <p>○ 良い例：1回 `getValues()`</p>
+                    <pre><code><span class="code-comment">// 一括で全データを配列に読み込む</span>
+const allData = sheet.getValues(); 
+for (let row of allData) {
+  <span class="code-comment">// 配列内で処理する（高速）</span>
+}</code></pre>
+                    <h4>その他</h4>
+                    <p>`CacheService`や`PropertiesService`を活用し、頻繁にアクセスするデータを高速に読み書きします。</p>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/5128a5ab-d7cd-4248-84cd-a614e8a4d9f5" alt="バッチ処理効率化">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 5 Example 4 -->
+    <div class="slide">
+        <div class="slide-header">【Lv5-具体例4】育成：文化醸成とメンタリング</div>
+        <div class="slide-content">
+            <p class="step-title">エキスパートの最も重要な責務は、次のエキスパートを育てることです。</p>
+            <div class="two-column">
+                <div class="column">
+                    <h4>コミュニティ運営</h4>
+                    <p>社内チャットに専門チャンネルを開設し、質問に答えたり、有用な情報を定期的に発信します。</p>
+                    <h4>勉強会・LT会の主催</h4>
+                    <p>新しい技術の紹介や、各部署の成功事例を共有する場を定期的に設けます。</p>
+                    <h4>メンタリング</h4>
+                    <p>Lv3〜4のメンバーの相談に乗り、コードレビューや設計のアドバイスを通じて成長を支援します。</p>
+                </div>
+                <div class="column">
+                    <div class="illustration">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/7ea083e4-6ad6-4fe7-a860-f5064131502d" alt="知識の森">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 5 Summary -->
+    <div class="slide">
+        <div class="slide-header">【個人レベル5】まとめ</div>
+        <div class="slide-content center-content">
+            <h2 style="font-size:32px;">あなたは会社の生産性をデザインする改革者です</h2>
+            <div class="illustration" style="margin: 30px auto; width:80%;">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/901429ee-2b75-4dbe-b76e-4aeec04e901e" alt="組織変革リーダー">
+            </div>
+            <ul style="text-align:left; font-size:20px; margin: 0 auto; width:80%;">
+                <li>✔️ 個別最適ではなく、組織全体の最適を考えた設計・開発ができる。</li>
+                <li>✔️ ガバナンスと文化醸成を通じて、持続可能な開発体制を構築できる。</li>
+                <li>✔️ 技術的リーダーシップを発揮し、後進を育成できる。</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Organizational Maturity Model -->
+    <div class="slide">
+        <div class="slide-header">【組織レベル】GAS活用成熟度モデル</div>
+        <div class="slide-content">
+            <p style="font-size:18px;">個人のスキルアップと並行し、組織としてもGAS活用の成熟度を高めていくことを目指します。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:10%;">レベル</th>
+                        <th style="width:45%;">状態イメージ（定性目標）</th>
+                        <th style="width:45%;">定量要件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="text-align:center; font-weight:bold;">Lv 1</td><td>組織の中でGASを試しはじめている段階</td><td>5割以上のメンバーが個人レベル1以上</td></tr>
+                    <tr><td style="text-align:center; font-weight:bold;">Lv 2</td><td>組織としてGASが日常的に使われだしている段階</td><td>5割以上のメンバーが個人レベル2以上</td></tr>
+                    <tr><td style="text-align:center; font-weight:bold;">Lv 3</td><td>GAS活用をリードする人が存在し、組織の活用レベルが向上し動いている段階</td><td>7割以上のメンバーが個人レベル2以上、かつ個人レベル3以上が1名以上存在</td></tr>
+                    <tr><td style="text-align:center; font-weight:bold;">Lv 4</td><td>GASによって既存業務のやり方が変わり、組織構成にも変化がみられはじめている段階</td><td>5割以上のメンバーが個人レベル3以上、かつ個人レベル4以上が1名以上存在</td></tr>
+                    <tr><td style="text-align:center; font-weight:bold;">Lv 5</td><td>GASだからこそ可能な戦略が実行されている段階</td><td>7割以上のメンバーが個人レベル3以上、かつ個人レベル4以上が3割以上、個人レベル5が1名以上存在</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Support System -->
+    <div class="slide">
+        <div class="slide-header">全社推進体制と学習サポート</div>
+        <div class="slide-content">
+            <p style="font-size:18px;">全社員が安心してスキルアップに取り組めるよう、人事部が全面的にサポートします。</p>
+            <div class="illustration" style="margin-top:30px;">
+                <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/b25d5c3e-7a6c-4937-9721-091cbe0b92e5" alt="学習サポート体制">
+            </div>
+        </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="slide">
+        <div class="slide-header">結び：継続的なスキル向上に向けて</div>
+        <div class="slide-content center-content">
+            <p style="font-size:24px; line-height:1.8;">GASは、AI時代の業務遂行における<strong style="color:#00a4c5;">基礎スキル</strong>です。</p>
+            <p style="font-size:24px; line-height:1.8;">小さな自動化の積み重ねが、組織全体の<strong style="color:#00a4c5;">生産性を飛躍的に向上</strong>させます。</p>
+            <p style="font-size:24px; line-height:1.8;">本日ご紹介したガイドラインとサポート体制を活用し、<br>まずは自身の業務から<strong style="color:#00a4c5;">変革の一歩</strong>を踏み出しましょう。</p>
+            <div style="background-color:#ccedf3; padding:20px 30px; margin-top:30px; border-radius:8px; width:80%;">
+                <p style="margin:0; font-size:20px;">最初のステップは、レベル1の「ファーストタッチ」から。</p>
+                <p style="margin:10px 0 0 0; font-size:22px; font-weight:bold;">まずは、来週開催の「GAS入門ハンズオン研修」へのご参加をお待ちしております。</p>
+            </div>
+            <p style="margin-top:50px; font-size:22px;">ご清聴いただき、誠にありがとうございました。</p>
+        </div>
+    </div>
+
+</body>
+</html>
